@@ -989,121 +989,7 @@ button, input, select, textarea {
   font-weight: 800;
 }
 
-/* ==========================================================================
-   BRANCH LOCATOR (Compact & Fast)
-   ========================================================================== */
-.locator-section {
-  background: #FCFBF7;
-}
 
-.locator-box {
-  background: #FFFFFF;
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-md);
-  border: 1.5px solid #FEF3C7;
-  margin-bottom: 2rem;
-}
-
-.locator-search-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: #F8FAFC;
-  padding: 0.4rem;
-  border-radius: var(--radius-full);
-  border: 1.5px solid #CBD5E1;
-}
-
-.search-input-wrap {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  padding-left: 1rem;
-  gap: 0.5rem;
-}
-
-.search-input {
-  width: 100%;
-  border: none;
-  background: transparent;
-  font-size: 0.95rem;
-  color: #0F172A;
-  outline: none;
-}
-
-.search-filter-select {
-  border: none;
-  background: #FFFFFF;
-  border-radius: var(--radius-full);
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #475569;
-  cursor: pointer;
-  outline: none;
-  box-shadow: var(--shadow-sm);
-}
-
-.branches-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-
-.branch-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: var(--radius-md);
-  padding: 1.4rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
-}
-
-.branch-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-yellow);
-}
-
-.branch-city-badge {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 0.15rem 0.55rem;
-  border-radius: var(--radius-full);
-  background: #E0F2FE;
-  color: #0369A1;
-  margin-bottom: 0.5rem;
-}
-
-.branch-name {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #0F172A;
-  margin-bottom: 0.35rem;
-}
-
-.branch-address {
-  font-size: 0.85rem;
-  color: #64748B;
-  margin-bottom: 0.75rem;
-  line-height: 1.45;
-}
-
-.branch-contact {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-}
 
 /* ==========================================================================
    FACILITIES
@@ -1160,95 +1046,7 @@ button, input, select, textarea {
   line-height: 1.5;
 }
 
-/* ==========================================================================
-   FRANCHISE SECTION
-   ========================================================================== */
-.franchise-section {
-  background: linear-gradient(135deg, #FFB800 0%, #FF8F00 50%, #E52928 100%);
-  color: #FFFFFF;
-}
 
-.franchise-container {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: 3rem;
-}
-
-.franchise-title {
-  font-family: var(--font-heading);
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.franchise-desc {
-  font-size: 1.05rem;
-  opacity: 0.95;
-  line-height: 1.6;
-  margin-bottom: 1.75rem;
-}
-
-.franchise-perks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-.perk-pill {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.75rem 0.95rem;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.perk-icon {
-  font-size: 1.25rem;
-}
-
-.perk-text strong {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  color: #FFFFFF;
-}
-
-.perk-text span {
-  font-size: 0.72rem;
-  opacity: 0.85;
-}
-
-.franchise-form-card {
-  background: #FFFFFF;
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  color: #1E293B;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 1.25rem;
-}
-
-.form-header h3 {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #0F172A;
-  margin-bottom: 0.2rem;
-}
-
-.form-header p {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
 
 .form-group {
   margin-bottom: 0.85rem;
@@ -1729,20 +1527,117 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   TABLET VIEW ADAPTATIONS (769px to 1024px)
+   LAPTOP & OLDER SCREEN ADAPTATIONS (1025px to 1366px & 768px height)
+   Optimized for 1366x768, 1280x800, 1024x768 screens
    ========================================================================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .container {
+    max-width: 1140px;
+    padding: 0 1.25rem;
+  }
+
+  .nav-menu {
+    gap: 0.85rem;
+  }
+
+  .nav-link {
+    font-size: 0.88rem;
+    padding: 0.35rem 0.2rem;
+  }
+
+  .nav-actions .btn {
+    padding: 0.55rem 1.15rem;
+    font-size: 0.88rem;
   }
 
   .hero-title {
-    font-size: 2.3rem;
+    font-size: 2.45rem;
+    line-height: 1.2;
   }
 
   .hero-img {
+    height: 360px;
+  }
+
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+
+  .wheel-orbit {
+    width: 340px;
     height: 340px;
+  }
+
+  .wheel-center {
+    width: 135px;
+    height: 135px;
+  }
+
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .modal-card {
+    max-height: 85vh;
+    padding: 1.75rem;
+  }
+}
+
+/* Also handle older laptop screens with limited vertical viewport height (<= 768px height) */
+@media (max-height: 800px) and (min-width: 769px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+  
+  .hero-section {
+    padding: 2.5rem 0 3rem 0;
+  }
+
+  .hero-img {
+    height: 320px;
+  }
+
+  .modal-card {
+    max-height: 85vh;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+}
+
+/* ==========================================================================
+   TABLET VIEW ADAPTATIONS (769px to 1024px)
+   ========================================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .nav-menu {
+    gap: 0.65rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 0.25rem 0.15rem;
+  }
+
+  .nav-actions .btn {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+  }
+
+  .hero-title {
+    font-size: 2.15rem;
+  }
+
+  .hero-img {
+    height: 320px;
   }
 
   .pillars-grid {
@@ -1755,11 +1650,11 @@ button, input, select, textarea {
 
   .about-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .about-image-main {
-    height: 360px;
+    height: 340px;
   }
 
   .curriculum-container {
@@ -1768,25 +1663,18 @@ button, input, select, textarea {
   }
 
   .wheel-orbit {
-    width: 340px;
-    height: 340px;
+    width: 330px;
+    height: 330px;
   }
 
   .programs-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .branches-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
 
   .facilities-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .franchise-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .reviews-grid {
@@ -1798,29 +1686,40 @@ button, input, select, textarea {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
+
+  .modal-card {
+    max-height: 85vh;
+    padding: 1.6rem;
+  }
 }
 
 /* ==========================================================================
    MOBILE VIEW OPTIMIZATION (Up to 768px)
-   NO LAG, COMPACT LENGTH, HORIZONTAL SWIPABLE CARDS
+   Fast, zero-lag, no horizontal overflow, comfortable touch targets
    ========================================================================== */
 @media (max-width: 768px) {
   body {
-    padding-bottom: 60px; /* Space for sticky bottom bar */
+    padding-bottom: 64px; /* Space for sticky bottom bar */
   }
 
-  .top-bar-links {
-    display: none;
+  /* Prevent auto zoom on iOS Safari */
+  input, select, textarea, .form-control {
+    font-size: 16px !important;
   }
 
   .top-bar {
-    text-align: center;
     font-size: 0.78rem;
-    padding: 0.35rem 0;
+    padding: 0.35rem 0.5rem;
   }
 
   .top-bar-inner {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .top-bar-links {
+    display: none; /* Keep top bar clean on mobile */
   }
 
   .nav-menu {
@@ -1830,8 +1729,9 @@ button, input, select, textarea {
     right: 0;
     background: #FFFFFF;
     flex-direction: column;
-    padding: 1.5rem;
-    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+    padding: 1.25rem 1.5rem;
+    gap: 0.85rem;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
     transform: translateY(-160%);
     transition: transform var(--transition-fast);
     z-index: 99;
@@ -1839,6 +1739,14 @@ button, input, select, textarea {
 
   .nav-menu.active {
     transform: translateY(0);
+  }
+
+  .nav-link {
+    font-size: 1.05rem;
+    padding: 0.5rem 0;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #F1F5F9;
   }
 
   .mobile-toggle {
@@ -1851,13 +1759,13 @@ button, input, select, textarea {
 
   /* Compact Hero */
   .hero-section {
-    padding: 2rem 0 2.5rem 0;
+    padding: 2rem 0 2.25rem 0;
     text-align: center;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
 
   .hero-title {
@@ -1866,22 +1774,24 @@ button, input, select, textarea {
   }
 
   .hero-subtitle {
-    font-size: 0.95rem;
-    margin: 0 auto 1.35rem auto;
+    font-size: 0.92rem;
+    margin: 0 auto 1.25rem auto;
   }
 
   .hero-actions {
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
 
   .hero-actions .btn {
     width: 100%;
+    min-height: 46px;
   }
 
   .hero-trust-indicators {
     justify-content: space-around;
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     gap: 0.5rem;
   }
 
@@ -1911,33 +1821,33 @@ button, input, select, textarea {
   }
 
   .hero-img {
-    height: 250px;
+    height: 240px;
   }
 
   .floating-pill {
-    display: none; /* Hide heavy floating pills on mobile to eliminate clutter */
+    display: none;
   }
 
   .section-padding {
-    padding: 2.75rem 0;
+    padding: 2.5rem 0;
   }
 
   .section-header {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .section-title {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
   }
 
   .section-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
-  /* Compact Horizontal Swipeable Modules for Mobile (Avoid endless page scrolling) */
+  /* Compact Horizontal Swipeable Modules for Mobile */
   .pillars-section {
     margin-top: 0;
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
   }
 
   .pillars-grid {
@@ -1959,7 +1869,7 @@ button, input, select, textarea {
 
   /* Compact 2x2 Stats */
   .stats-banner {
-    padding: 1.75rem 0;
+    padding: 1.5rem 0;
   }
 
   .stats-grid {
@@ -1968,31 +1878,31 @@ button, input, select, textarea {
   }
 
   .stat-number {
-    font-size: 1.85rem;
+    font-size: 1.75rem;
   }
 
   .stat-label {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
   }
 
   /* Compact About */
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
   .about-image-main {
-    height: 230px;
+    height: 220px;
   }
 
   .about-experience-card {
-    bottom: -12px;
-    left: 12px;
-    padding: 0.75rem 1.1rem;
+    bottom: -10px;
+    left: 10px;
+    padding: 0.65rem 1rem;
   }
 
   .exp-years {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
 
   .feature-checklist {
@@ -2000,9 +1910,9 @@ button, input, select, textarea {
     gap: 0.5rem;
   }
 
-  /* Curriculum on Mobile: Replace complex 400px wheel with neat tap-able tabs */
+  /* Curriculum on Mobile */
   .wheel-wrapper {
-    display: none; /* Hide large circular orbit on mobile */
+    display: none;
   }
 
   .curriculum-mobile-strip {
@@ -2042,11 +1952,11 @@ button, input, select, textarea {
   }
 
   .curriculum-detail-card {
-    padding: 1.4rem;
+    padding: 1.35rem;
   }
 
   .curriculum-detail-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
 
   .curriculum-highlights {
@@ -2054,7 +1964,7 @@ button, input, select, textarea {
     gap: 0.65rem;
   }
 
-  /* Programs on Mobile: Horizontal Swipeable Cards */
+  /* Programs on Mobile: Swipeable Cards */
   .programs-grid {
     display: flex;
     overflow-x: auto;
@@ -2071,54 +1981,7 @@ button, input, select, textarea {
     scroll-snap-align: start;
   }
 
-  /* Branch Locator on Mobile */
-  .locator-box {
-    padding: 1.2rem;
-  }
-
-  .locator-search-bar {
-    flex-direction: column;
-    border-radius: var(--radius-md);
-    background: transparent;
-    border: none;
-    padding: 0;
-    gap: 0.65rem;
-  }
-
-  .search-input-wrap {
-    width: 100%;
-    background: #F8FAFC;
-    border: 1.5px solid #CBD5E1;
-    border-radius: var(--radius-md);
-    padding: 0.65rem 0.85rem;
-  }
-
-  .search-filter-select {
-    width: 100%;
-    border: 1.5px solid #CBD5E1;
-    border-radius: var(--radius-md);
-    padding: 0.65rem 0.85rem;
-  }
-
-  .branches-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  /* Hide excess branch cards on mobile by default to keep page short */
-  .branch-card:nth-child(n+4) {
-    display: none;
-  }
-
-  .branch-card.mobile-show {
-    display: flex !important;
-  }
-
-  #mobileViewMoreBranchesBtn {
-    display: block !important;
-  }
-
-  /* Facilities on Mobile: Horizontal Cards */
+  /* Facilities on Mobile */
   .facilities-grid {
     display: flex;
     overflow-x: auto;
@@ -2135,25 +1998,7 @@ button, input, select, textarea {
     scroll-snap-align: start;
   }
 
-  /* Franchise on Mobile */
-  .franchise-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .franchise-title {
-    font-size: 1.85rem;
-  }
-
-  .franchise-perks-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .franchise-form-card {
-    padding: 1.4rem;
-  }
-
-  /* Reviews on Mobile: Horizontal Cards */
+  /* Reviews on Mobile */
   .reviews-grid {
     display: flex;
     overflow-x: auto;
@@ -2168,18 +2013,37 @@ button, input, select, textarea {
     max-width: 280px;
     flex-shrink: 0;
     scroll-snap-align: start;
-    padding: 1.35rem;
+    padding: 1.25rem;
   }
 
-  /* Footer on Mobile: Clean & Compact */
+  /* CTA Banner on Mobile */
+  .cta-banner-section {
+    padding: 3rem 0;
+  }
+
+  .cta-banner-title {
+    font-size: 1.75rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  /* Footer on Mobile */
   .site-footer {
-    padding: 2.5rem 0 1.5rem 0;
+    padding: 2.25rem 0 1.25rem 0;
   }
 
   .footer-top {
     grid-template-columns: 1fr;
     gap: 1.75rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.75rem;
   }
 
   .footer-bottom {
@@ -2188,19 +2052,67 @@ button, input, select, textarea {
     gap: 0.75rem;
   }
 
-  /* Show Sticky Bottom Bar on Mobile */
+  /* Sticky Bottom Bar on Mobile */
   .mobile-sticky-bar {
     display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border-top: 1.5px solid #F1F5F9;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    padding: 0.45rem 1rem max(0.45rem, env(safe-area-inset-bottom)) 1rem;
+    z-index: 998;
   }
 
+  .mobile-sticky-inner {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .mobile-sticky-btn {
+    flex: 1;
+    min-height: 42px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.88rem;
+  }
+
+  /* Floating WhatsApp & Back to Top */
   .floating-contact-bar {
-    bottom: 75px;
-    right: 15px;
+    bottom: 74px;
+    right: 14px;
+    gap: 0.5rem;
+    z-index: 997;
   }
 
   .floating-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+  }
+
+  /* Modal on Mobile */
+  .modal-overlay {
+    padding: 0.75rem;
+  }
+
+  .modal-card {
+    padding: 1.35rem 1.1rem;
+    border-radius: var(--radius-lg);
+    max-height: 90vh;
+  }
+}
+
+/* Extra small mobile devices (<= 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .pillar-card, .program-card, .facility-card, .review-card {
+    min-width: 82vw;
   }
 }
