@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animateCounters();
   }
 
-  // 4. ShemEduMAX™ Curriculum Explorer (Synchronized Desktop Wheel & Mobile Pills)
+  // 4. ShemEduMAX™ Curriculum Explorer (Slow Rotating Orbit & Tap-to-Inspect with Auto-Resume)
   const curriculumData = {
     1: {
       title: "Research-Backed Curriculum",
@@ -173,8 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const wheelOrbit = document.getElementById('wheelOrbit');
+  const wheelNodesTrack = document.getElementById('wheelNodesTrack');
   const wheelNodes = document.querySelectorAll('.wheel-node');
   const mobilePills = document.querySelectorAll('.curr-mobile-pill');
+  const curriculumDetailCard = document.getElementById('curriculumDetail');
   const currTitle = document.getElementById('currTitle');
   const currBadge = document.getElementById('currBadge');
   const currDesc = document.getElementById('currDesc');
@@ -182,18 +185,101 @@ document.addEventListener('DOMContentLoaded', () => {
   const currH1Sub = document.getElementById('currH1Sub');
   const currH2 = document.getElementById('currH2');
   const currH2Sub = document.getElementById('currH2Sub');
+  const currProgressBar = document.getElementById('currCardProgressBar');
+  const currRotText = document.getElementById('currRotText');
 
-  const updateCurriculumView = (id) => {
-    const data = curriculumData[id];
+  let currentCurriculumId = 1;
+  let currentWheelAngle = 0;
+  const TOTAL_NODES = 8;
+  const CYCLE_INTERVAL = 3800; // 3.8s per option
+  const USER_PAUSE_DELAY = 6000; // 6s resume delay after user interaction
+  let autoRotateTimer = null;
+  let resumeTimer = null;
+  let progressStartTime = null;
+  let progressAnimFrame = null;
+  let isAutoRotating = true;
+
+  const updateProgressBar = (timestamp) => {
+    if (!progressStartTime) progressStartTime = timestamp;
+    const elapsed = timestamp - progressStartTime;
+    const pct = Math.min(100, (elapsed / CYCLE_INTERVAL) * 100);
+
+    if (currProgressBar) {
+      currProgressBar.style.width = pct + '%';
+    }
+
+    if (elapsed < CYCLE_INTERVAL && isAutoRotating) {
+      progressAnimFrame = requestAnimationFrame(updateProgressBar);
+    }
+  };
+
+  const startProgressBar = () => {
+    cancelAnimationFrame(progressAnimFrame);
+    progressStartTime = null;
+    if (currProgressBar) currProgressBar.style.width = '0%';
+    if (isAutoRotating) {
+      progressAnimFrame = requestAnimationFrame(updateProgressBar);
+    }
+  };
+
+  const resetProgressBar = () => {
+    cancelAnimationFrame(progressAnimFrame);
+    if (currProgressBar) currProgressBar.style.width = '0%';
+  };
+
+  // Physically rotate wheel track and counter-rotate child nodes so options revolve around center
+  const rotateWheelToId = (targetId) => {
+    const targetIndex = targetId - 1;
+    // Current top node index based on currentWheelAngle
+    const currentTopIndex = (((-Math.round(currentWheelAngle / 45)) % TOTAL_NODES) + TOTAL_NODES) % TOTAL_NODES;
+    let diff = targetIndex - currentTopIndex;
+    if (diff > 4) diff -= 8;
+    if (diff < -4) diff += 8;
+
+    currentWheelAngle -= (diff * 45);
+
+    if (wheelNodesTrack) {
+      wheelNodesTrack.style.transform = `rotate(${currentWheelAngle}deg)`;
+    }
+
+    wheelNodes.forEach(node => {
+      node.style.setProperty('--counter-rot', `${-currentWheelAngle}deg`);
+    });
+  };
+
+  const updateCurriculumView = (id, isUserInteraction = false) => {
+    const numId = parseInt(id, 10);
+    const data = curriculumData[numId];
     if (!data) return;
 
-    wheelNodes.forEach(n => {
-      n.classList.toggle('active', n.getAttribute('data-id') === id);
+    currentCurriculumId = numId;
+
+    // Physically spin the wheel so selected option revolves to top spotlight
+    rotateWheelToId(numId);
+
+    // Update active satellite nodes
+    wheelNodes.forEach(node => {
+      const nodeId = parseInt(node.getAttribute('data-id'), 10);
+      node.classList.toggle('active', nodeId === numId);
     });
 
-    mobilePills.forEach(p => {
-      p.classList.toggle('active', p.getAttribute('data-id') === id);
+    // Update mobile pills and auto-scroll active pill into view
+    mobilePills.forEach(pill => {
+      const pillId = parseInt(pill.getAttribute('data-id'), 10);
+      const isActive = pillId === numId;
+      pill.classList.toggle('active', isActive);
+      if (isActive && pill.offsetParent !== null) {
+        pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
     });
+
+    // Animate detail card content with subtle fade
+    if (curriculumDetailCard) {
+      curriculumDetailCard.style.opacity = '0.82';
+      setTimeout(() => {
+        curriculumDetailCard.style.opacity = '1';
+      }, 180);
+    }
 
     if (currTitle) currTitle.textContent = data.title;
     if (currBadge) currBadge.textContent = data.badge;
@@ -202,20 +288,124 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currH1Sub) currH1Sub.textContent = data.p1Sub;
     if (currH2) currH2.textContent = data.p2;
     if (currH2Sub) currH2Sub.textContent = data.p2Sub;
+
+    if (isUserInteraction) {
+      // User tapped an option: pause auto-rotation immediately
+      stopAutoRotation();
+      resetProgressBar();
+
+      if (currRotText) {
+        currRotText.textContent = `Selected: ${data.title} • Resumes in 6s`;
+      }
+
+      // Clear any prior resume timer and restart rotation after 6s of inactivity
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        startAutoRotation();
+      }, USER_PAUSE_DELAY);
+    } else {
+      if (currRotText) {
+        currRotText.textContent = 'Auto-rotating wheel';
+      }
+      startProgressBar();
+    }
   };
 
+  const nextCurriculumOption = () => {
+    const nextId = (currentCurriculumId % TOTAL_NODES) + 1;
+    updateCurriculumView(nextId, false);
+  };
+
+  const startAutoRotation = () => {
+    isAutoRotating = true;
+    clearInterval(autoRotateTimer);
+    clearTimeout(resumeTimer);
+    if (currRotText) currRotText.textContent = 'Auto-rotating wheel';
+    startProgressBar();
+    autoRotateTimer = setInterval(nextCurriculumOption, CYCLE_INTERVAL);
+  };
+
+  const stopAutoRotation = () => {
+    isAutoRotating = false;
+    clearInterval(autoRotateTimer);
+    resetProgressBar();
+  };
+
+  // Node Click Handlers
   wheelNodes.forEach(node => {
     node.addEventListener('click', () => {
       const id = node.getAttribute('data-id');
-      updateCurriculumView(id);
+      updateCurriculumView(id, true);
     });
   });
 
+  // Mobile Pills Click Handlers
   mobilePills.forEach(pill => {
     pill.addEventListener('click', () => {
       const id = pill.getAttribute('data-id');
-      updateCurriculumView(id);
+      updateCurriculumView(id, true);
     });
+  });
+
+  // Pause on hover over detail card so parents can read at leisure
+  curriculumDetailCard?.addEventListener('mouseenter', () => {
+    if (isAutoRotating) {
+      clearInterval(autoRotateTimer);
+      cancelAnimationFrame(progressAnimFrame);
+      if (currRotText) currRotText.textContent = 'Paused (Reading)';
+    }
+  });
+
+  curriculumDetailCard?.addEventListener('mouseleave', () => {
+    if (isAutoRotating) {
+      startAutoRotation();
+    }
+  });
+
+  // Initialize wheel rotation and start auto-cycle
+  rotateWheelToId(1);
+  startAutoRotation();
+
+  // 5. Interactive Moving Reviews Marquee Controls
+  const reviewsMarqueeWrapper = document.getElementById('reviewsMarqueeWrapper');
+  const reviewsTrack = document.getElementById('reviewsTrack');
+  const reviewsToggleBtn = document.getElementById('reviewsToggleBtn');
+  const reviewsToggleIcon = document.getElementById('reviewsToggleIcon');
+  const reviewsToggleText = document.getElementById('reviewsToggleText');
+  const reviewsPrevBtn = document.getElementById('reviewsPrevBtn');
+  const reviewsNextBtn = document.getElementById('reviewsNextBtn');
+
+  let isReviewsPaused = false;
+
+  const toggleReviewsMarquee = () => {
+    isReviewsPaused = !isReviewsPaused;
+    if (reviewsMarqueeWrapper) {
+      reviewsMarqueeWrapper.classList.toggle('is-paused', isReviewsPaused);
+    }
+    if (reviewsToggleIcon && reviewsToggleText) {
+      if (isReviewsPaused) {
+        reviewsToggleIcon.textContent = '▶';
+        reviewsToggleText.textContent = 'Play';
+      } else {
+        reviewsToggleIcon.textContent = '⏸';
+        reviewsToggleText.textContent = 'Pause';
+      }
+    }
+  };
+
+  reviewsToggleBtn?.addEventListener('click', toggleReviewsMarquee);
+
+  // Manual nudge buttons for reviews
+  reviewsPrevBtn?.addEventListener('click', () => {
+    if (reviewsMarqueeWrapper) {
+      reviewsMarqueeWrapper.scrollBy({ left: -360, behavior: 'smooth' });
+    }
+  });
+
+  reviewsNextBtn?.addEventListener('click', () => {
+    if (reviewsMarqueeWrapper) {
+      reviewsMarqueeWrapper.scrollBy({ left: 360, behavior: 'smooth' });
+    }
   });
 
 
