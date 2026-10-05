@@ -263,13 +263,18 @@ document.addEventListener('DOMContentLoaded', () => {
       node.classList.toggle('active', nodeId === numId);
     });
 
-    // Update mobile pills and auto-scroll active pill into view
+    // Update mobile pills
     mobilePills.forEach(pill => {
       const pillId = parseInt(pill.getAttribute('data-id'), 10);
       const isActive = pillId === numId;
       pill.classList.toggle('active', isActive);
-      if (isActive && pill.offsetParent !== null) {
-        pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+      // ONLY scroll the horizontal pills strip itself if it was an explicit user tap
+      // NEVER call pill.scrollIntoView which forcefully jumps the entire window down!
+      if (isActive && isUserInteraction && pill.parentElement) {
+        const strip = pill.parentElement;
+        const targetLeft = pill.offsetLeft - (strip.clientWidth / 2) + (pill.clientWidth / 2);
+        strip.scrollTo({ left: targetLeft, behavior: 'smooth' });
       }
     });
 
@@ -537,5 +542,193 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2800);
   });
 
+  // 9. Programs Mobile Carousel Sync & Arrow/Dot Navigation
+  const programsGrid = document.getElementById('programsGrid');
+  const progDots = document.querySelectorAll('.prog-dot');
+  const progCounter = document.getElementById('programsCounter');
+  const progPrevBtn = document.getElementById('programsPrevBtn');
+  const progNextBtn = document.getElementById('programsNextBtn');
+
+  if (programsGrid) {
+    const programCards = programsGrid.querySelectorAll('.program-card');
+
+    const updateActiveProgram = (index) => {
+      progDots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+      if (progCounter && programCards.length > 0) {
+        progCounter.textContent = `${index + 1} of ${programCards.length}`;
+      }
+    };
+
+    const scrollToProgram = (index) => {
+      if (programCards[index]) {
+        const card = programCards[index];
+        const containerLeft = programsGrid.getBoundingClientRect().left;
+        const cardLeft = card.getBoundingClientRect().left;
+        const offset = cardLeft - containerLeft - (programsGrid.clientWidth - card.clientWidth) / 2;
+        programsGrid.scrollBy({ left: offset, behavior: 'smooth' });
+        updateActiveProgram(index);
+      }
+    };
+
+    progDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index'), 10);
+        scrollToProgram(idx);
+      });
+    });
+
+    let currentProgramIndex = 0;
+    progPrevBtn?.addEventListener('click', () => {
+      currentProgramIndex = Math.max(0, currentProgramIndex - 1);
+      scrollToProgram(currentProgramIndex);
+    });
+
+    progNextBtn?.addEventListener('click', () => {
+      currentProgramIndex = Math.min(programCards.length - 1, currentProgramIndex + 1);
+      scrollToProgram(currentProgramIndex);
+    });
+
+    // Throttled scroll listener to keep dots & counter perfectly in sync with user swipe
+    let progScrollTicking = false;
+    programsGrid.addEventListener('scroll', () => {
+      if (!progScrollTicking) {
+        requestAnimationFrame(() => {
+          const scrollLeft = programsGrid.scrollLeft;
+          const cardWidth = programCards[0]?.offsetWidth || 280;
+          const activeIndex = Math.min(
+            programCards.length - 1,
+            Math.max(0, Math.round(scrollLeft / (cardWidth + 16)))
+          );
+          currentProgramIndex = activeIndex;
+          updateActiveProgram(activeIndex);
+          progScrollTicking = false;
+        });
+        progScrollTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  // 10. Pillars Creative Quick-Strip & Swipe Sync
+  const pillarsGrid = document.getElementById('pillarsGrid');
+  const pillarBtns = document.querySelectorAll('.pillar-pill-btn');
+  const pillarsCounter = document.getElementById('pillarsCounter');
+
+  if (pillarsGrid && pillarBtns.length > 0) {
+    const pillarCards = pillarsGrid.querySelectorAll('.pillar-card');
+
+    const updateActivePillar = (index) => {
+      pillarBtns.forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === index);
+      });
+      if (pillarsCounter && pillarCards.length > 0) {
+        pillarsCounter.textContent = `${index + 1} of ${pillarCards.length}`;
+      }
+    };
+
+    const scrollToPillar = (index) => {
+      if (pillarCards[index]) {
+        const card = pillarCards[index];
+        const containerLeft = pillarsGrid.getBoundingClientRect().left;
+        const cardLeft = card.getBoundingClientRect().left;
+        const offset = cardLeft - containerLeft - (pillarsGrid.clientWidth - card.clientWidth) / 2;
+        pillarsGrid.scrollBy({ left: offset, behavior: 'smooth' });
+        updateActivePillar(index);
+      }
+    };
+
+    pillarBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'), 10);
+        scrollToPillar(idx);
+      });
+    });
+
+    let pillarScrollTicking = false;
+    pillarsGrid.addEventListener('scroll', () => {
+      if (!pillarScrollTicking) {
+        requestAnimationFrame(() => {
+          const scrollLeft = pillarsGrid.scrollLeft;
+          const cardWidth = pillarCards[0]?.offsetWidth || 260;
+          const activeIndex = Math.min(
+            pillarCards.length - 1,
+            Math.max(0, Math.round(scrollLeft / (cardWidth + 14)))
+          );
+          updateActivePillar(activeIndex);
+          pillarScrollTicking = false;
+        });
+        pillarScrollTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  // 11. Facilities Mobile Carousel Sync & Arrow/Dot Navigation
+  const facilitiesGrid = document.getElementById('facilitiesGrid');
+  const facDots = document.querySelectorAll('.fac-dot');
+  const facilitiesCounter = document.getElementById('facilitiesCounter');
+  const facilitiesPrevBtn = document.getElementById('facilitiesPrevBtn');
+  const facilitiesNextBtn = document.getElementById('facilitiesNextBtn');
+
+  if (facilitiesGrid && facDots.length > 0) {
+    const facilityCards = facilitiesGrid.querySelectorAll('.facility-card');
+
+    const updateActiveFacility = (index) => {
+      facDots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+      if (facilitiesCounter && facilityCards.length > 0) {
+        facilitiesCounter.textContent = `${index + 1} of ${facilityCards.length}`;
+      }
+    };
+
+    const scrollToFacility = (index) => {
+      if (facilityCards[index]) {
+        const card = facilityCards[index];
+        const containerLeft = facilitiesGrid.getBoundingClientRect().left;
+        const cardLeft = card.getBoundingClientRect().left;
+        const offset = cardLeft - containerLeft - (facilitiesGrid.clientWidth - card.clientWidth) / 2;
+        facilitiesGrid.scrollBy({ left: offset, behavior: 'smooth' });
+        updateActiveFacility(index);
+      }
+    };
+
+    facDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index'), 10);
+        scrollToFacility(idx);
+      });
+    });
+
+    let currentFacilityIndex = 0;
+    facilitiesPrevBtn?.addEventListener('click', () => {
+      currentFacilityIndex = Math.max(0, currentFacilityIndex - 1);
+      scrollToFacility(currentFacilityIndex);
+    });
+
+    facilitiesNextBtn?.addEventListener('click', () => {
+      currentFacilityIndex = Math.min(facilityCards.length - 1, currentFacilityIndex + 1);
+      scrollToFacility(currentFacilityIndex);
+    });
+
+    let facScrollTicking = false;
+    facilitiesGrid.addEventListener('scroll', () => {
+      if (!facScrollTicking) {
+        requestAnimationFrame(() => {
+          const scrollLeft = facilitiesGrid.scrollLeft;
+          const cardWidth = facilityCards[0]?.offsetWidth || 280;
+          const activeIndex = Math.min(
+            facilityCards.length - 1,
+            Math.max(0, Math.round(scrollLeft / (cardWidth + 14)))
+          );
+          currentFacilityIndex = activeIndex;
+          updateActiveFacility(activeIndex);
+          facScrollTicking = false;
+        });
+        facScrollTicking = true;
+      }
+    }, { passive: true });
+  }
 
 });
+

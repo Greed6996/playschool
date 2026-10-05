@@ -126,6 +126,20 @@ button, input, select, textarea {
   gap: 1rem;
 }
 
+.top-bar-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.top-bar-text-desktop {
+  display: inline;
+}
+
+.top-bar-text-mobile {
+  display: none;
+}
+
 .top-bar-badge {
   display: inline-flex;
   align-items: center;
@@ -604,6 +618,10 @@ button, input, select, textarea {
   z-index: 10;
 }
 
+.pillars-creative-nav {
+  display: none;
+}
+
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -859,21 +877,20 @@ button, input, select, textarea {
   width: 380px;
   height: 380px;
   border-radius: 50%;
-  border: 2px dashed #E2E8F0;
+  border: none; /* Removed duplicate border to prevent 2 overlapping circles */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.6s ease;
 }
 
-/* Subtle Rotating Dashed Track */
+/* Single Subtle Orbital Dashed Track */
 .orbit-rotator-ring {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 2px dashed rgba(229, 41, 40, 0.25);
-  animation: orbitRingSpin 50s linear infinite;
+  border: 2px dashed rgba(229, 41, 40, 0.32);
   pointer-events: none;
 }
 
@@ -1175,6 +1192,10 @@ button, input, select, textarea {
   background: #F8FAFC;
 }
 
+.programs-mobile-nav {
+  display: none;
+}
+
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1261,6 +1282,10 @@ button, input, select, textarea {
    ========================================================================== */
 .facilities-section {
   background: #FFFFFF;
+}
+
+.facilities-mobile-nav {
+  display: none;
 }
 
 .facilities-grid {
@@ -1370,10 +1395,24 @@ button, input, select, textarea {
   backdrop-filter: blur(8px);
 }
 
+.google-wordmark {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+
 .google-stars {
   color: #FBBF24;
   font-size: 1.05rem;
   letter-spacing: 1px;
+}
+
+.google-rating-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #FFFFFF;
 }
 
 /* Controls Bar */
@@ -2281,15 +2320,48 @@ button, input, select, textarea {
     font-size: 16px !important;
   }
 
+  /* Thin, single-line announcement bar on mobile */
   .top-bar {
-    font-size: 0.78rem;
-    padding: 0.35rem 0.5rem;
+    font-size: 0.74rem;
+    padding: 0.22rem 0.5rem;
+    line-height: 1.25;
   }
 
   .top-bar-inner {
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .top-bar-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 0.35rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .top-bar-badge {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.45rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .top-bar-text-desktop {
+    display: none !important;
+  }
+
+  .top-bar-text-mobile {
+    display: inline !important;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .top-bar-links {
@@ -2402,6 +2474,15 @@ button, input, select, textarea {
     display: none;
   }
 
+  /* Reposition ABC sticker safely so it never overlaps the hero trust badge */
+  .sticker-abc {
+    top: 1.2%;
+    left: auto;
+    right: 8%;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+
   .section-padding {
     padding: 2.5rem 0;
   }
@@ -2418,27 +2499,108 @@ button, input, select, textarea {
     font-size: 0.88rem;
   }
 
-  /* Compact Horizontal Swipeable Modules for Mobile */
+  /* Creative Mobile Navigation & Peek Deck for 4 Pillars */
   .pillars-section {
     margin-top: 0;
     padding: 1.25rem 0;
+  }
+
+  .pillars-creative-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .pillars-nav-hint {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+  }
+
+  .pillars-counter {
+    background: #FFF1F0;
+    color: var(--color-primary);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .pillar-quick-strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .pillar-quick-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pillar-pill-btn {
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.32rem 0.75rem;
+    border-radius: var(--radius-full);
+    border: 1.5px solid #E2E8F0;
+    background: #FFFFFF;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .pillar-pill-btn.active[data-pillar="magenta"] {
+    background: #E91E63;
+    border-color: #E91E63;
+    color: #FFFFFF;
+    box-shadow: 0 3px 10px rgba(233, 30, 99, 0.3);
+  }
+
+  .pillar-pill-btn.active[data-pillar="amber"] {
+    background: #D97706;
+    border-color: #D97706;
+    color: #FFFFFF;
+    box-shadow: 0 3px 10px rgba(217, 119, 6, 0.3);
+  }
+
+  .pillar-pill-btn.active[data-pillar="crimson"] {
+    background: #E52928;
+    border-color: #E52928;
+    color: #FFFFFF;
+    box-shadow: 0 3px 10px rgba(229, 41, 40, 0.3);
+  }
+
+  .pillar-pill-btn.active[data-pillar="blue"] {
+    background: #0284C7;
+    border-color: #0284C7;
+    color: #FFFFFF;
+    box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
   }
 
   .pillars-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 0.25rem 0 0.75rem 0;
+    gap: 0.85rem;
+    padding: 0.25rem 0 0.85rem 0;
     -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 1.25rem;
   }
 
   .pillar-card {
-    min-width: 250px;
-    max-width: 260px;
+    min-width: 76vw;
+    max-width: 78vw;
     flex-shrink: 0;
-    scroll-snap-align: start;
-    padding: 1.25rem 1rem;
+    scroll-snap-align: center;
+    padding: 1.25rem 1.15rem;
   }
 
   /* Compact 2x2 Stats */
@@ -2459,70 +2621,53 @@ button, input, select, textarea {
     font-size: 0.75rem;
   }
 
-  /* Compact About */
+  /* Compact About with Unobstructed Child Image */
   .about-grid {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
 
+  .about-visual {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
   .about-image-main {
-    height: 220px;
+    height: 280px;
+    object-position: center 20%;
+    border-radius: var(--radius-lg);
   }
 
   .about-experience-card {
-    bottom: -10px;
-    left: 10px;
-    padding: 0.65rem 1rem;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 0.42rem 0.8rem;
+    border-radius: var(--radius-full);
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    border-left: 3.5px solid var(--color-primary);
   }
 
   .exp-years {
-    font-size: 1.6rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+
+  .exp-text strong {
+    font-size: 0.78rem;
+  }
+
+  .exp-text span {
+    font-size: 0.66rem;
   }
 
   .feature-checklist {
     grid-template-columns: 1fr;
     gap: 0.5rem;
-  }
-
-  /* Curriculum on Mobile */
-  .wheel-wrapper {
-    display: none;
-  }
-
-  .curriculum-mobile-strip {
-    display: flex;
-    overflow-x: auto;
-    gap: 0.5rem;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.25rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
-
-  .curr-mobile-pill {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
-    padding: 0.45rem 0.85rem;
-    border-radius: var(--radius-full);
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #475569;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .curr-mobile-pill.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #FFFFFF;
-  }
-
-  .curriculum-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
   /* Curriculum on Mobile: Scaled Interactive Wheel + Pills Strip */
@@ -2563,14 +2708,15 @@ button, input, select, textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0;
-    overflow: hidden;
+    padding: 0.25rem 0;
+    overflow: visible;
+    width: 100%;
   }
 
   .wheel-orbit {
-    transform: scale(0.8);
+    transform: scale(0.66);
     transform-origin: center center;
-    margin: -1.75rem 0;
+    margin: -3.6rem 0;
   }
 
   .curriculum-container {
@@ -2591,52 +2737,312 @@ button, input, select, textarea {
     gap: 0.65rem;
   }
 
-  /* Programs on Mobile: Swipeable Cards */
+  /* Programs Section Mobile Controls & Peek Cards */
+  .programs-mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .programs-nav-hint {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .programs-counter {
+    background: #FFF1F0;
+    color: var(--color-primary);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-full);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .programs-nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .programs-nav-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .programs-nav-arrow:hover, .programs-nav-arrow:active {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+  }
+
+  .programs-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .prog-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    padding: 0;
+  }
+
+  .prog-dot.active {
+    width: 22px;
+    border-radius: 99px;
+    background: var(--color-primary);
+  }
+
   .programs-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding-bottom: 0.75rem;
+    gap: 0.85rem;
+    padding: 0.25rem 0 1rem 0;
     -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 1.25rem;
   }
 
   .program-card {
-    min-width: 260px;
-    max-width: 270px;
+    min-width: 78vw;
+    max-width: 80vw;
     flex-shrink: 0;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
-  /* Facilities on Mobile */
+  /* Facilities on Mobile: Indicator Bar & Peek Cards */
+  .facilities-mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .facilities-nav-hint {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .facilities-counter {
+    background: #FFF1F0;
+    color: var(--color-primary);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-full);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .facilities-nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .facilities-nav-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .facilities-nav-arrow:hover, .facilities-nav-arrow:active {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+  }
+
+  .facilities-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .fac-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    padding: 0;
+  }
+
+  .fac-dot.active {
+    width: 22px;
+    border-radius: 99px;
+    background: var(--color-primary);
+  }
+
   .facilities-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding-bottom: 0.75rem;
+    gap: 0.85rem;
+    padding: 0.25rem 0 1rem 0;
     -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 1.25rem;
   }
 
   .facility-card {
-    min-width: 250px;
-    max-width: 260px;
+    min-width: 78vw;
+    max-width: 80vw;
     flex-shrink: 0;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
-  /* Reviews Moving Marquee on Mobile */
+  /* Compact Google Reviews Badge & Parent Testimonials on Mobile */
+  .reviews-section {
+    padding: 1.6rem 0 1.4rem 0;
+  }
+
+  .reviews-section .section-header {
+    margin-bottom: 0.7rem;
+  }
+
+  .reviews-section .section-title {
+    font-size: 1.35rem;
+  }
+
+  .reviews-section .section-desc {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .google-badge-bar {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 0.75rem;
+    max-width: 95%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .google-badge-bar .google-wordmark {
+    font-size: 0.98rem !important;
+  }
+
+  .google-stars {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .google-rating-text {
+    font-size: 0.72rem !important;
+    white-space: nowrap;
+  }
+
   .reviews-controls-bar {
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.35rem;
+    margin-bottom: 0.65rem;
     text-align: center;
   }
 
+  .reviews-hint {
+    font-size: 0.72rem;
+  }
+
+  .reviews-marquee-wrapper {
+    padding: 0.3rem 0;
+  }
+
+  .reviews-marquee-track {
+    gap: 0.75rem;
+  }
+
   .review-card {
-    width: 295px;
-    min-width: 295px;
-    padding: 1.35rem;
+    width: 245px;
+    min-width: 235px;
+    max-width: 255px;
+    padding: 0.85rem 0.85rem;
+    border-radius: 12px;
+  }
+
+  .review-header {
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .review-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.82rem;
+  }
+
+  .review-author strong {
+    font-size: 0.82rem;
+  }
+
+  .review-author span {
+    font-size: 0.68rem;
+  }
+
+  .review-stars {
+    font-size: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .review-text {
+    font-size: 0.76rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .review-date {
+    margin-top: 0.45rem;
+    font-size: 0.66rem;
   }
 
   /* Location Section on Mobile */
@@ -2757,12 +3163,26 @@ button, input, select, textarea {
 
 /* Extra small mobile devices (<= 380px) */
 @media (max-width: 380px) {
+  .top-bar-badge {
+    font-size: 0.66rem;
+    padding: 0.1rem 0.35rem;
+  }
+
+  .top-bar-text-mobile {
+    font-size: 0.68rem;
+  }
+
   .hero-title {
     font-size: 1.6rem;
   }
 
   .pillar-card, .program-card, .facility-card, .review-card {
-    min-width: 82vw;
+    min-width: 80vw;
+  }
+
+  .wheel-orbit {
+    transform: scale(0.58);
+    margin: -4.5rem 0;
   }
 }
 

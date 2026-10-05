@@ -27,9 +27,10 @@
   <!-- Top Announcement Bar -->
   <div class="top-bar">
     <div class="container top-bar-inner">
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <span class="top-bar-badge">✨ Admissions Open 2025-26</span>
-        <span>Enroll now & secure your child's joyful early learning journey!</span>
+      <div class="top-bar-content">
+        <span class="top-bar-badge">✨ Admissions Open 2025–26</span>
+        <span class="top-bar-text top-bar-text-desktop">Enroll now & secure your child's joyful early learning journey!</span>
+        <span class="top-bar-text top-bar-text-mobile">Enroll Now • Secure Child's Seat!</span>
       </div>
       <div class="top-bar-links">
         <a href="#location" class="top-bar-link" title="Click to view campus location and map">
@@ -180,7 +181,21 @@
   <!-- 4 Signature Brand Pillars (Preserving Shemrock's core 4 boxes with modern styling) -->
   <section class="pillars-section">
     <div class="container">
-      <div class="pillars-grid">
+      <!-- Creative Mobile Navigation for Pillars -->
+      <div class="pillars-creative-nav" id="pillarsCreativeNav">
+        <div class="pillars-nav-hint">
+          <span>✨ 4 Pillars of Excellence</span>
+          <span class="pillars-counter" id="pillarsCounter">1 of 4</span>
+        </div>
+        <div class="pillar-quick-strip" id="pillarQuickStrip">
+          <button class="pillar-pill-btn active" data-index="0" data-pillar="magenta">🎯 Vision</button>
+          <button class="pillar-pill-btn" data-index="1" data-pillar="amber">👥 Leadership</button>
+          <button class="pillar-pill-btn" data-index="2" data-pillar="crimson">🏆 Awards</button>
+          <button class="pillar-pill-btn" data-index="3" data-pillar="blue">❤️ Community</button>
+        </div>
+      </div>
+
+      <div class="pillars-grid" id="pillarsGrid">
         <!-- Pillar 1: Magenta / Pink -->
         <div class="pillar-card pillar-magenta"
           onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
@@ -450,7 +465,25 @@
         </p>
       </div>
 
-      <div class="programs-grid">
+      <!-- Mobile Swipe & Program Indicator Bar -->
+      <div class="programs-mobile-nav" id="programsMobileNav">
+        <div class="programs-nav-hint">
+          <span>👈 Swipe to view all 4 programs 👉</span>
+          <span class="programs-counter" id="programsCounter">1 of 4</span>
+        </div>
+        <div class="programs-nav-controls">
+          <button class="programs-nav-arrow" id="programsPrevBtn" aria-label="Previous Program" title="Previous Program">‹</button>
+          <div class="programs-dots" id="programsDots">
+            <button class="prog-dot active" data-index="0" aria-label="Program 1: Playgroup"></button>
+            <button class="prog-dot" data-index="1" aria-label="Program 2: Pre-Nursery"></button>
+            <button class="prog-dot" data-index="2" aria-label="Program 3: Nursery"></button>
+            <button class="prog-dot" data-index="3" aria-label="Program 4: Kindergarten"></button>
+          </div>
+          <button class="programs-nav-arrow" id="programsNextBtn" aria-label="Next Program" title="Next Program">›</button>
+        </div>
+      </div>
+
+      <div class="programs-grid" id="programsGrid">
         <!-- Program 1 -->
         <div class="program-card">
           <div class="program-card-header" style="background: #FFF1F0;">
@@ -546,7 +579,24 @@
         </p>
       </div>
 
-      <div class="facilities-grid">
+      <!-- Mobile Navigation for Campus Facilities -->
+      <div class="facilities-mobile-nav" id="facilitiesMobileNav">
+        <div class="facilities-nav-hint">
+          <span>👈 Swipe to view all 3 facilities 👉</span>
+          <span class="facilities-counter" id="facilitiesCounter">1 of 3</span>
+        </div>
+        <div class="facilities-nav-controls">
+          <button class="facilities-nav-arrow" id="facilitiesPrevBtn" aria-label="Previous Facility" title="Previous Facility">‹</button>
+          <div class="facilities-dots" id="facilitiesDots">
+            <button class="fac-dot active" data-index="0" aria-label="Montessori Activity Corners"></button>
+            <button class="fac-dot" data-index="1" aria-label="Smart Interactive Classrooms"></button>
+            <button class="fac-dot" data-index="2" aria-label="Indoor Soft Play & Ball Pool"></button>
+          </div>
+          <button class="facilities-nav-arrow" id="facilitiesNextBtn" aria-label="Next Facility" title="Next Facility">›</button>
+        </div>
+      </div>
+
+      <div class="facilities-grid" id="facilitiesGrid">
         <div class="facility-card">
           <div class="facility-img-wrap">
             <img src="https://images.unsplash.com/photo-1566378246598-5b11a0d486cc?auto=format&fit=crop&w=600&q=80"
@@ -630,13 +680,13 @@
       </div>
 
       <div class="google-badge-bar">
-        <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;">
+        <div class="google-wordmark">
           <span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span
             style="color: #FBBC05;">o</span><span style="color: #4285F4;">g</span><span
             style="color: #34A853;">l</span><span style="color: #EA4335;">e</span>
         </div>
         <div class="google-stars">★★★★★</div>
-        <span style="font-weight: 600; font-size: 0.95rem;">5.0 Star Rating (3,900+ Verified Reviews)</span>
+        <span class="google-rating-text"><strong style="color: #FBBF24;">5.0</strong> Rating • 3,900+ Reviews</span>
       </div>
 
       <!-- Marquee Controls -->
