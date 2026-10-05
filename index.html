@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Main Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="style.css?v=2.1">
+  <link rel="stylesheet" href="style.css?v=2.2">
 </head>
 
 <body>
@@ -51,25 +51,91 @@
         <img src="logo-3.png" alt="SHEMROCK for a ROCK-Solid Foundation" class="brand-logo-img">
       </a>
 
-      <nav>
+      <!-- Mobile Backdrop Overlay -->
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+      <!-- Navigation Drawer / Menu -->
+      <nav class="nav-menu-wrapper" id="navMenuWrapper">
+        <div class="mobile-drawer-header">
+          <div class="drawer-brand">
+            <img src="logo-3.png" alt="SHEMROCK Playschool" class="drawer-logo-img">
+          </div>
+          <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">✕</button>
+        </div>
+
         <ul class="nav-menu" id="navMenu">
-          <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="#curriculum" class="nav-link">ShemEduMAX™</a></li>
-          <li class="nav-item"><a href="#programs" class="nav-link">Programs</a></li>
-          <li class="nav-item"><a href="#facilities" class="nav-link">Campus Life</a></li>
-          <li class="nav-item"><a href="#reviews" class="nav-link">Reviews</a></li>
-          <li class="nav-item"><a href="#location" class="nav-link">Campus & Map</a></li>
-          <li class="nav-item"><a href="#faq" class="nav-link">FAQs</a></li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link">
+              <span class="nav-link-icon">🏫</span>
+              <span class="nav-link-text">About Us</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#curriculum" class="nav-link">
+              <span class="nav-link-icon">🔬</span>
+              <span class="nav-link-text">ShemEduMAX™</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#programs" class="nav-link">
+              <span class="nav-link-icon">🎒</span>
+              <span class="nav-link-text">Programs</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#facilities" class="nav-link">
+              <span class="nav-link-icon">🏰</span>
+              <span class="nav-link-text">Campus Life</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#reviews" class="nav-link">
+              <span class="nav-link-icon">💬</span>
+              <span class="nav-link-text">Parent Reviews</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#location" class="nav-link">
+              <span class="nav-link-icon">📍</span>
+              <span class="nav-link-text">Campus & Map</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#faq" class="nav-link">
+              <span class="nav-link-icon">❓</span>
+              <span class="nav-link-text">FAQs</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
         </ul>
+
+        <!-- Mobile Drawer Quick Actions -->
+        <div class="mobile-drawer-actions">
+          <a href="tel:+919864134701" class="drawer-action-btn drawer-btn-call">
+            <span>📞</span> Call: +91 98641 34701
+          </a>
+          <button class="drawer-action-btn drawer-btn-enquire" onclick="openAdmissionModal(); if(window.closeMobileMenu) window.closeMobileMenu();">
+            <span>🎒 Book Campus Tour</span>
+          </button>
+          <div class="drawer-campus-note">
+            <span>📍 Beltola, Guwahati • Admissions Open 2025–26</span>
+          </div>
+        </div>
       </nav>
 
       <div class="nav-actions">
-        <button class="btn btn-primary btn-pulse" onclick="openAdmissionModal()">
-          <span>Enquire Now</span>
-          <span>➜</span>
+        <button class="btn btn-primary btn-pulse header-enquire-btn" onclick="openAdmissionModal()">
+          <span class="header-enquire-text">Enquire</span>
+          <span class="header-enquire-arrow">➜</span>
         </button>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
             stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -1461,7 +1527,7 @@
   <canvas id="confettiCanvas"></canvas>
 
   <!-- Interactive JavaScript (with cache-buster) -->
-  <script src="script.js?v=2.1"></script>
+  <script src="script.js?v=2.2"></script>
 </body>
 
 </html>
