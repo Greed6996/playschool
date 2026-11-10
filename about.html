@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | SHEMROCK Playschool - Vision, Mission & Leadership</title>
+  <meta name="description"
+    content="Discover SHEMROCK's 35+ year legacy in early childhood education. Read our Vision, Mission, and the inspiring message from Founder Director Dr. (Mrs.) B. Arora.">
+  <meta name="keywords"
+    content="About SHEMROCK, Shemrock Vision, Shemrock Mission, Dr Mrs B Arora, Playschool Beltola, Best Preschool Guwahati, Early Childhood Education">
+  <meta name="author" content="SHEMROCK Group of Schools">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Us | SHEMROCK Playschool - 35+ Years of Nurturing Young Minds">
+  <meta property="og:description"
+    content="Founded by renowned educationists, SHEMROCK is India's 1st playschool chain, empowering 4,50,000+ children with joyful, play-based early learning.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo-3.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo-3.png">
+
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2.3">
+</head>
+
+<body>
+  <!-- Top Notification Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="badge-new">Admissions 2025-26</span>
+        <span>🎉 Admissions Open for Playgroup, Pre-Nursery, Nursery & KG • Limited Seats per Batch</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:+919864134701" class="top-bar-link"
+          style="background: rgba(0,0,0,0.15); padding: 0.2rem 0.65rem; border-radius: 99px;">
+          <span>📞</span> Call: +91 98641 34701
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header & Navigation -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="SHEMROCK Playschool Home">
+        <img src="logo-3.png" alt="SHEMROCK for a ROCK-Solid Foundation" class="brand-logo-img">
+      </a>
+
+      <!-- Mobile Backdrop Overlay -->
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+      <!-- Navigation Drawer / Menu -->
+      <nav class="nav-menu-wrapper" id="navMenuWrapper">
+        <div class="mobile-drawer-header">
+          <div class="drawer-brand">
+            <img src="logo-3.png" alt="SHEMROCK Playschool" class="drawer-logo-img">
+          </div>
+          <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">✕</button>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <span class="nav-link-icon">🏠</span>
+              <span class="nav-link-text">Home</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link active" style="color: var(--color-primary); font-weight: 700;">
+              <span class="nav-link-icon">🏫</span>
+              <span class="nav-link-text">About Us</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#curriculum" class="nav-link">
+              <span class="nav-link-icon">🔬</span>
+              <span class="nav-link-text">ShemEduMAX™</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#programs" class="nav-link">
+              <span class="nav-link-icon">🎒</span>
+              <span class="nav-link-text">Programs</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#facilities" class="nav-link">
+              <span class="nav-link-icon">🏰</span>
+              <span class="nav-link-text">Campus Life</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#reviews" class="nav-link">
+              <span class="nav-link-icon">💬</span>
+              <span class="nav-link-text">Parent Reviews</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#location" class="nav-link">
+              <span class="nav-link-icon">📍</span>
+              <span class="nav-link-text">Campus & Map</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#faq" class="nav-link">
+              <span class="nav-link-icon">❓</span>
+              <span class="nav-link-text">FAQs</span>
+              <span class="nav-link-arrow">›</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile Drawer Quick Actions -->
+        <div class="mobile-drawer-actions">
+          <a href="tel:+919864134701" class="drawer-action-btn drawer-btn-call">
+            <span>📞</span> Call: +91 98641 34701
+          </a>
+          <button class="drawer-action-btn drawer-btn-enquire"
+            onclick="openAdmissionModal(); if(window.closeMobileMenu) window.closeMobileMenu();">
+            <span>🎒 Admissions Enquiry</span>
+          </button>
+          <div class="drawer-campus-note">
+            <span>📍 Beltola, Guwahati • Admissions Open 2025–26</span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary btn-pulse header-enquire-btn" onclick="openAdmissionModal()">
+          <span class="header-enquire-text">Enquire</span>
+          <span class="header-enquire-arrow">➜</span>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+          <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Page Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span>About SHEMROCK</span>
+      </div>
+
+      <div class="about-hero-content">
+        <span class="pill-badge pill-badge-yellow" style="margin-bottom: 1.25rem;">
+          <span>🌱</span> India's 1st Playschool Chain • Established 1989
+        </span>
+        <h1 class="about-hero-title">
+          Where Young Minds Bloom for a <span class="curved-highlight">Rock-Solid</span> Foundation!
+        </h1>
+        <p class="about-hero-desc">
+          For over 35 years, SHEMROCK has transformed early childhood education across India and abroad. We build a
+          joyful,
+          loving sanctuary where children are celebrated, curiosity is ignited, and little learners blossom into
+          confident,
+          compassionate leaders of tomorrow.
+        </p>
+
+        <!-- Quick Jump Navigation -->
+        <div class="about-quick-nav">
+          <a href="#vision" class="about-nav-pill">
+            <span>🌟</span> Our Vision
+          </a>
+          <a href="#mission" class="about-nav-pill">
+            <span>🎯</span> Our Mission
+          </a>
+          <a href="#leadership" class="about-nav-pill">
+            <span>👩‍🏫</span> Director's Desk
+          </a>
+          <a href="#values" class="about-nav-pill">
+            <span>❤️</span> Why Parents Choose Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Trust Stats Strip -->
+      <div class="about-stats-strip">
+        <div class="about-stat-item">
+          <span class="about-stat-number">35+</span>
+          <span class="about-stat-label">Years of Pedagogical Trust</span>
+        </div>
+        <div class="about-stat-item">
+          <span class="about-stat-number">4.5 Lakh+</span>
+          <span class="about-stat-label">Happy Little Alumni</span>
+        </div>
+        <div class="about-stat-item">
+          <span class="about-stat-number">650+</span>
+          <span class="about-stat-label">Branches Worldwide</span>
+        </div>
+        <div class="about-stat-item">
+          <span class="about-stat-number">100%</span>
+          <span class="about-stat-label">Child-Centric Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Our Vision -->
+  <section class="vision-section" id="vision">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" style="background: #FFF1F0; color: #E52928;">🌟 Our Guiding Light</span>
+        <h2 class="section-title">
+          Our Vision for <span class="highlight-red">Every Child</span>
+        </h2>
+        <p class="section-desc">
+          We envision a world where every child’s early years are filled with joy, discovery, and the freedom to grow
+          naturally — surrounded by warmth, encouragement, and lifelong inspiration.
+        </p>
+      </div>
+
+      <!-- Storytelling Card -->
+      <div class="vision-story-card">
+        <span class="pill-badge pill-badge-yellow" style="margin-bottom: 0.75rem;">💖 The SHEMROCK Promise</span>
+        <div class="vision-quote-tagline">
+          This is where I was loved, cared for, and inspired to grow.
+        </div>
+        <p style="font-size: 1.05rem; color: #475569; line-height: 1.7; margin-top: 1rem;">
+          At SHEMROCK, we know that a child’s early years are not a rehearsal — they are the very soil in which
+          character,
+          curiosity, and happiness take root. When children feel secure and deeply valued, learning is never a task; it
+          becomes
+          an exhilarating adventure of laughter and discovery. Every smile, every question, and every tiny step forward
+          is
+          embraced with open arms.
+        </p>
+      </div>
+
+      <!-- 4 Vision Cornerstones Grid -->
+      <div class="vision-grid">
+        <div class="vision-card">
+          <div class="vision-card-icon" style="background: #FEF3C7; color: #D97706;">🏆</div>
+          <h3 class="vision-card-title">Most Trusted Preschool Brand</h3>
+          <p class="vision-card-text">
+            To be the most trusted and cherished preschool brand, loved unconditionally by children and revered by
+            parents
+            alike for pioneering excellence, transparency, and safety since 1989.
+          </p>
+        </div>
+
+        <div class="vision-card">
+          <div class="vision-card-icon" style="background: #E0F2FE; color: #0284C7;">🎨</div>
+          <h3 class="vision-card-title">A Happy Learning Haven</h3>
+          <p class="vision-card-text">
+            To create a vibrant, joyful learning environment that nurtures innate curiosity and creativity, encouraging
+            children
+            to explore, question, and express themselves without hesitation.
+          </p>
+        </div>
+
+        <div class="vision-card">
+          <div class="vision-card-icon" style="background: #DCFCE7; color: #16A34A;">🌱</div>
+          <h3 class="vision-card-title">Confident & Compassionate Learners</h3>
+          <p class="vision-card-text">
+            To guide young minds toward becoming confident, responsible, and empathetic individuals equipped with both
+            emotional
+            intelligence and rock-solid foundational academic readiness.
+          </p>
+        </div>
+
+        <div class="vision-card">
+          <div class="vision-card-icon" style="background: #FEE2E2; color: #DC2626;">❤️</div>
+          <h3 class="vision-card-title">An Inspired Sense of Belonging</h3>
+          <p class="vision-card-text">
+            To ensure that every child who walks through our doors feels a profound sense of warmth and security,
+            knowing they
+            are in a sanctuary where they are truly loved and inspired to flourish.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Our Mission -->
+  <section class="mission-section" id="mission">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" style="background: #EFF6FF; color: #0284C7;">🎯 Purpose in Action</span>
+        <h2 class="section-title">
+          Our Mission: <span class="highlight-red">Nurturing Holistically</span>
+        </h2>
+        <p class="section-desc">
+          How our philosophy translates into daily smiles, meaningful play, and measurable developmental breakthroughs.
+        </p>
+      </div>
+
+      <!-- Core Mission Statement Box -->
+      <div class="mission-statement-box">
+        <h3 class="mission-statement-title">
+          “Helping Young Minds Grow in a Child-Friendly Environment… for the Holistic Development of Every Child.”
+        </h3>
+        <p class="mission-statement-text">
+          We believe that children learn best when they feel loved, safe, and inspired. That’s why every SHEMROCK
+          preschool
+          is carefully crafted to be warm, welcoming, and bursting with joy — turning every single day into a memorable
+          learning
+          experience.
+        </p>
+      </div>
+
+      <!-- 4 Mission Focus Pillars -->
+      <div class="mission-pillars-grid">
+        <div class="mission-pillar-card" style="border-top: 4px solid #E52928;">
+          <span class="mission-pillar-badge" style="background: #FEE2E2; color: #E52928;">Pillar 1</span>
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🧩</div>
+          <h4 class="mission-pillar-title">Concept Clarity</h4>
+          <p class="mission-pillar-desc">
+            Encouraging curious little minds to explore, understand, and retain concepts naturally through hands-on
+            discovery,
+            multi-sensory play, and interactive experiential learning instead of rote pressure.
+          </p>
+        </div>
+
+        <div class="mission-pillar-card" style="border-top: 4px solid #FFB800;">
+          <span class="mission-pillar-badge" style="background: #FEF3C7; color: #B45309;">Pillar 2</span>
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🤗</div>
+          <h4 class="mission-pillar-title">Love & Care</h4>
+          <p class="mission-pillar-desc">
+            Infusing genuine compassion and maternal warmth into every moment. From morning greetings to mealtime, our
+            teachers
+            and female attendants make school feel like a loving second home.
+          </p>
+        </div>
+
+        <div class="mission-pillar-card" style="border-top: 4px solid #0284C7;">
+          <span class="mission-pillar-badge" style="background: #E0F2FE; color: #0284C7;">Pillar 3</span>
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">⚖️</div>
+          <h4 class="mission-pillar-title">Balanced Growth</h4>
+          <p class="mission-pillar-desc">
+            Striking the optimal harmony between freedom to explore individual interests and gentle guidance to learn
+            discipline,
+            patience, manners, and cooperative social interaction.
+          </p>
+        </div>
+
+        <div class="mission-pillar-card" style="border-top: 4px solid #10B981;">
+          <span class="mission-pillar-badge" style="background: #DCFCE7; color: #16A34A;">Pillar 4</span>
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🌟</div>
+          <h4 class="mission-pillar-title">Holistic Development</h4>
+          <p class="mission-pillar-desc">
+            Fostering all 4 essential developmental domains — emotional resilience, social bonding, physical gross/fine
+            motor
+            skills, and intellectual readiness — so children blossom into happy, confident achievers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Daily Nurturing Promise Strip -->
+      <div class="mission-daily-strip">
+        <div>
+          <span class="pill-badge pill-badge-yellow" style="margin-bottom: 0.5rem;">☀️ Every Day at SHEMROCK</span>
+          <h3 class="mission-daily-title">Turning Every Moment into a Joyful Milestone</h3>
+          <p style="font-size: 0.92rem; color: #64748B; margin-top: 0.5rem;">
+            Our structured daily routine gives young learners predictability, confidence, and immense happiness.
+          </p>
+        </div>
+        <div class="mission-daily-list">
+          <div class="mission-daily-item"><span class="icon">✓</span> Circle Time & Social Sharing</div>
+          <div class="mission-daily-item"><span class="icon">✓</span> Multi-Sensory Phonics & Numbers</div>
+          <div class="mission-daily-item"><span class="icon">✓</span> Sensory Ball Pool & Gross Motor Play</div>
+          <div class="mission-daily-item"><span class="icon">✓</span> Nutritious Meal & Etiquette Practice</div>
+          <div class="mission-daily-item"><span class="icon">✓</span> Creative Art, Clay & Music Discovery</div>
+          <div class="mission-daily-item"><span class="icon">✓</span> 1:10 Caring Teacher-to-Child Ratio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Leadership & Director's Desk -->
+  <section class="director-section" id="leadership">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" style="background: #FEF3C7; color: #B45309;">👩‍🏫 Leadership & Vision</span>
+        <h2 class="section-title">
+          From the <span class="highlight-red">Director's Desk</span>
+        </h2>
+        <p class="section-desc">
+          Insights, pedagogical philosophy, and heartfelt advice for parents navigating the most formative years of
+          their child’s life.
+        </p>
+      </div>
+
+      <div class="director-grid">
+        <!-- Profile Card -->
+        <div class="director-profile-card">
+          <div class="director-avatar-wrapper">
+            <span>👩‍🏫</span>
+            <div class="director-avatar-badge" title="Pioneer Educationist">🎓</div>
+          </div>
+          <h3 class="director-name">Dr. (Mrs.) B. Arora</h3>
+          <div class="director-role">Founder Director, SHEMROCK Group of Schools</div>
+          <p style="font-size: 0.9rem; color: #64748B; line-height: 1.55;">
+            Celebrated educationist and pioneer who introduced organized early childhood education to India. Dedicated
+            to
+            empowering parents and nurturing little minds for over three and a half decades.
+          </p>
+
+          <div class="director-bio-points">
+            <div class="director-bio-point">
+              <span>🏆</span>
+              <span><strong>35+ Years Leadership:</strong> Guided 4,50,000+ children across 650+ international
+                branches.</span>
+            </div>
+            <div class="director-bio-point">
+              <span>🧠</span>
+              <span><strong>Early Childhood Pioneer:</strong> Author and visionary architect of the child-first
+                ShemEduMAX™ curriculum.</span>
+            </div>
+            <div class="director-bio-point">
+              <span>📚</span>
+              <span><strong>100+ Years Heritage:</strong> Backed by a family tradition of eminent scholars and academic
+                institution builders.</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <button class="btn btn-primary" onclick="openAdmissionModal()"
+              style="width: 100%; justify-content: center;">
+              <span>Enquire for Admissions 2025–26</span>
+              <span>➜</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Director's Letter Card -->
+        <div class="director-letter-card">
+          <div class="letter-header">
+            <span class="pill-badge pill-badge-yellow" style="margin-bottom: 0.5rem;">📜 A Message to Parents</span>
+            <h3 class="letter-title">The Critical Window: Why Preschool Matters at Age 2</h3>
+            <p class="letter-subtitle">By Dr. (Mrs.) B. Arora • Founder Director, SHEMROCK Group of Schools</p>
+          </div>
+
+          <div class="director-letter-body">
+            <p>
+              When your child is 2 years old, one of the most important decisions that you need to make is the choice of
+              the
+              right preschool for him or her. <strong>As 50% of the human brain development takes place from 2 to 4
+                years of
+                age</strong>, it is absolutely critical that you make the right choice so that your child receives the
+              right
+              foundation for life.
+            </p>
+
+            <div class="director-highlight-quote">
+              “50% of brain development occurs between 2 to 4 years of age. The right preschool is not a luxury — it is
+              the
+              irrechargeable foundation for a lifetime of confidence, joy, and success.”
+            </div>
+
+            <p>
+              However, in the presence of a large number of preschools with varied facilities, making the right choice
+              often becomes
+              confusing. As loving parents, a number of vital questions might be running through your mind:
+            </p>
+
+            <!-- Parent Questions Grid -->
+            <div class="director-questions-grid">
+              <div class="director-question-card">
+                <span class="q-icon">❓</span> Which is the right school for my child?
+              </div>
+              <div class="director-question-card">
+                <span class="q-icon">🏰</span> What facilities and safety are available?
+              </div>
+              <div class="director-question-card">
+                <span class="q-icon">📈</span> What are the previous learning results?
+              </div>
+              <div class="director-question-card">
+                <span class="q-icon">🎓</span> Who is the management — are they real educationists?
+              </div>
+              <div class="director-question-card">
+                <span class="q-icon">📜</span> What are their educational qualifications?
+              </div>
+              <div class="director-question-card">
+                <span class="q-icon">💖</span> Above all — will my child be happy?
+              </div>
+            </div>
+
+            <p>
+              After exploring SHEMROCK, you will get a clear glimpse of the rich, multifaceted life which we offer. You
+              will realise
+              that a child who enters into the cheerful and colourful corridors of SHEMROCK is instantly motivated to
+              learn and explore
+              everything that his or her curious young mind wishes to — in a loving, caring, encouraging, motivating,
+              and deeply
+              positive learning environment.
+            </p>
+
+            <p>
+              When your child completes his or her journey of learning at SHEMROCK, they will be <strong>fully prepared
+                and
+                confident</strong> to enter into the bigger setup of a formal school without anxiety or fear.
+            </p>
+
+            <p>
+              Your child deserves the very best, so I leave this privilege to you to decide for your child. However, the
+              moment your
+              child joins SHEMROCK, I would be happy to take him or her on a journey which is enjoyable, enriching, and
+              rewarding.
+            </p>
+
+            <p style="font-weight: 700; color: #0F172A; font-size: 1.1rem;">
+              I look forward to welcoming you and your little one to the SHEMROCK Family!
+            </p>
+
+            <!-- Signature block -->
+            <div class="director-signature-wrap">
+              <div>
+                <div class="director-signature-text">Dr. (Mrs.) B. Arora</div>
+                <div class="director-signature-title">Founder Director, SHEMROCK Group of Schools</div>
+              </div>
+              <a href="tel:+919864134701" class="btn btn-yellow">
+                <span>Speak with an Educator: +91 98641 34701</span>
+                <span>📞</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Why Parents Choose SHEMROCK -->
+  <section class="section-padding" id="values" style="background: #F8FAFC;">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" style="background: #DCFCE7; color: #16A34A;">🛡️ Parent Peace of Mind</span>
+        <h2 class="section-title">
+          Why 4.5 Lakh Parents <span class="highlight-red">Trust SHEMROCK</span>
+        </h2>
+        <p class="section-desc">
+          Every policy, facility, and curriculum module is engineered with the safety, comfort, and happiness of your
+          toddler at heart.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card pillar-magenta">
+          <div class="pillar-icon-box">👩‍🏫</div>
+          <h3 class="pillar-title">1:10 Caring Mentor Ratio</h3>
+          <p class="pillar-desc">
+            Personalized attention ensures no child feels lost or left behind. Every milestone, mood, and curiosity is
+            lovingly observed.
+          </p>
+          <span class="pillar-action">Dedicated Mentors →</span>
+        </div>
+
+        <div class="pillar-card pillar-amber">
+          <div class="pillar-icon-box">🛡️</div>
+          <h3 class="pillar-title">Child-Safe 24/7 Security</h3>
+          <p class="pillar-desc">
+            CCTV-monitored classrooms, anti-skid safety floors, verified female attendants, and sanitized play equipment
+            at all times.
+          </p>
+          <span class="pillar-action">Safe Infrastructure →</span>
+        </div>
+
+        <div class="pillar-card pillar-crimson">
+          <div class="pillar-icon-box">🧠</div>
+          <h3 class="pillar-title">ShemEduMAX™ Curriculum</h3>
+          <p class="pillar-desc">
+            Research-backed, play-based pedagogical system designed by educationists to build phonetics, logic, motor
+            skills, and creativity.
+          </p>
+          <span class="pillar-action">Scientifically Proven →</span>
+        </div>
+
+        <div class="pillar-card pillar-blue">
+          <div class="pillar-icon-box">🎓</div>
+          <h3 class="pillar-title">Formal School Preparedness</h3>
+          <p class="pillar-desc">
+            Stage exposure, interview readiness, and spoken English confidence make the transition to top primary
+            schools effortless.
+          </p>
+          <span class="pillar-action">Seamless Entry →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="cta-banner-section">
+    <div class="container cta-banner-content">
+      <h2 class="cta-banner-title">
+        Give Your Child the <span style="color: #FFB800;">SHEMROCK Advantage</span> Today!
+      </h2>
+      <p class="cta-banner-desc">
+        Admissions are open for the academic session 2025-26. Connect with our dedicated educators and give your child
+        the
+        warmest, rock-solid start in life.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn btn-yellow" onclick="openAdmissionModal()">
+          <span>Enquire for Admissions 2025–26</span>
+          <span>🎒</span>
+        </button>
+        <a href="tel:+919864134701" class="btn btn-outline-white">
+          <span>Call Helpline: +91 98641 34701</span>
+          <span>📞</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo-3.png" alt="SHEMROCK Playschool Guwahati" class="brand-logo-img">
+          <p>
+            SHEMROCK Guwahati brings India’s 1st and most trusted preschool chain to your neighborhood. Dedicated to
+            nurturing young minds with child-safe infrastructure, loving mentors, and an award-winning early childhood
+            curriculum since 1989.
+          </p>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" class="social-icon-btn" aria-label="Facebook">f</a>
+            <a href="https://twitter.com" target="_blank" class="social-icon-btn" aria-label="Twitter">𝕏</a>
+            <a href="https://youtube.com" target="_blank" class="social-icon-btn" aria-label="YouTube">▶</a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-btn" aria-label="Instagram">📸</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs & Campus</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">About SHEMROCK</a></li>
+            <li><a href="index.html#curriculum">ShemEduMAX™ System</a></li>
+            <li><a href="index.html#programs">Age-Wise Programs</a></li>
+            <li><a href="index.html#facilities">Campus Life & Safety</a></li>
+            <li><a href="index.html#reviews">Parent Reviews</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Guwahati Admissions</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">About & Vision</a></li>
+            <li><a href="about.html#leadership">Director's Desk</a></li>
+            <li><a href="index.html#programs">Playgroup & Pre-Nursery</a></li>
+            <li><a href="index.html#programs">Nursery & Kindergarten</a></li>
+            <li><a href="index.html#faq">Parent FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Guwahati Campus</h5>
+          <div class="footer-contact-info">
+            <div class="contact-row">
+              <span class="contact-row-icon">📍</span>
+              <span><strong>Campus:</strong> House No. 43, Near Central Hospital, Beltola, Guwahati - 781028</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-icon">🗺️</span>
+              <a href="https://maps.google.com/?cid=10112229116156857562&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-US&source=embed"
+                target="_blank" rel="noopener noreferrer"
+                style="color: #FFB800; font-weight: 700; text-decoration: underline;">
+                View on Google Maps ↗
+              </a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-icon">✉️</span>
+              <a href="mailto:guwahati@shemrock.com" style="color: inherit;">guwahati@shemrock.com</a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-icon">📞</span>
+              <a href="tel:+919864134701" style="color: inherit;">+91 98641 34701</a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-icon">⏰</span>
+              <span><strong>Visiting Hours:</strong> Mon – Sat: 9:00 AM – 3:30 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2025-2026 SHEMROCK Playschool, Guwahati. All Rights Reserved.
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Disclaimer</a>
+          <a href="#">Refund Policy</a>
+          <a href="#">Site Map</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons (WhatsApp + Scroll to Top) -->
+  <div class="floating-contact-bar">
+    <a href="https://wa.me/919864134701?text=Hello%20SHEMROCK%20Guwahati,%20I%20would%20like%20to%20enquire%20about%20playschool%20admissions."
+      target="_blank" class="floating-btn btn-whatsapp" title="Chat with Admission Counselor on WhatsApp"
+      aria-label="WhatsApp Chat">
+      💬
+    </a>
+    <button class="floating-btn btn-scroll-top" id="scrollTopBtn" title="Scroll to top" aria-label="Scroll to top">
+      ↑
+    </button>
+  </div>
+
+  <!-- Admission Enquiry Modal -->
+  <div class="modal-overlay" id="admissionModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="pill-badge pill-badge-yellow" style="margin-bottom: 0.5rem;">🎒 Guwahati Admissions 2025-26</span>
+        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #0F172A;">Admissions Enquiry 2025-26</h3>
+        <p style="font-size: 0.88rem; color: #64748B;">📍 House No. 43, Shemrock Hearts, Chandannagar Survey Road,
+          Beltola, Guwahati</p>
+        <p style="font-size: 0.82rem; color: #94A3B8; margin-top: 0.25rem;">Leave your details and our Beltola counselor
+          will assist you with all admissions guidance.</p>
+      </div>
+
+      <form id="admissionForm">
+        <input type="hidden" id="targetBranch" value="Shemrock Hearts Beltola, Guwahati">
+        <div class="form-group">
+          <label class="form-label" for="parentName">Parent / Guardian Name *</label>
+          <input type="text" id="parentName" class="form-control" placeholder="e.g. Priya Sharma" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="parentPhone">Contact Number *</label>
+          <input type="tel" id="parentPhone" class="form-control" placeholder="+91 98641 34701"
+            pattern="[0-9+ -]{10,14}" required>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="childAge">Child's Age *</label>
+            <select id="childAge" class="form-control" required>
+              <option value="1.5-2.5">1.5 - 2.5 yrs (Playgroup)</option>
+              <option value="2.5-3.5">2.5 - 3.5 yrs (Pre-Nursery)</option>
+              <option value="3.5-4.5">3.5 - 4.5 yrs (Nursery)</option>
+              <option value="4.5-5.5">4.5 - 5.5 yrs (KG / Prep)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="parentLocality">Locality in Guwahati *</label>
+            <input type="text" id="parentLocality" class="form-control" placeholder="e.g. Zoo Road, Beltola, Dispur"
+              required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.85rem;">
+          Submit Admission Enquiry ✨
+        </button>
+      </form>
+
+      <div id="formSuccess" style="display: none; text-align: center; padding: 2rem 1rem;">
+        <div style="font-size: 3.5rem; margin-bottom: 0.75rem;">🎉</div>
+        <h4 style="font-family: var(--font-heading); font-size: 1.5rem; color: #10B981; margin-bottom: 0.5rem;">Enquiry
+          Received Successfully!</h4>
+        <p style="color: #475569; font-size: 0.95rem;">Our Guwahati branch counselor will contact you within 2 business
+          hours with curriculum details and admission guidance.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sticky Bottom Conversion Bar -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar">
+    <div class="mobile-sticky-inner">
+      <a href="tel:+919864134701" class="btn btn-outline-primary mobile-sticky-btn">
+        <span>📞 Call: 9864134701</span>
+      </a>
+      <button class="btn btn-primary mobile-sticky-btn" onclick="openAdmissionModal()">
+        <span>🎒 Enquire Now</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Interactive JavaScript -->
+  <script src="script.js?v=2.2"></script>
+</body>
+
+</html>
