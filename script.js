@@ -123,8 +123,315 @@ document.addEventListener('DOMContentLoaded', () => {
     animateCounters();
   }
 
-  // 4. ShemEduMAX™ Curriculum (Modern 12-Pillar Grid)
-  // High-performance CSS transforms & transitions (zero timers, zero CPU lag)
+  // 4. ShemEduMAX™ Curriculum Explorer (12-Pillar Rotating Orbit & Tap-to-Inspect with Auto-Resume)
+  const curriculumData = {
+    1: {
+      title: "Research Based Curriculum",
+      badge: "Developmental Science",
+      desc: "Built on proven early-childhood developmental science, integrating cognitive milestones and research-backed frameworks for optimal early growth.",
+      p1: "Scientific Pedagogy",
+      p1Sub: "Structured age-appropriate cognitive stimulation",
+      p2: "Brain Architecture",
+      p2Sub: "Nurturing neural pathways during critical 2–4 years"
+    },
+    2: {
+      title: "Innovative Learning Resources",
+      badge: "Hands-On Kits",
+      desc: "Hands-on learning kits, creative tools, and interactive manipulatives that turn abstract ideas into tangible sensory understanding.",
+      p1: "Tactile Learning Aids",
+      p1Sub: "Custom manipulative kits for fine motor mastery",
+      p2: "Sensory Engagement",
+      p2Sub: "Multi-sensorial tools sparking natural curiosity"
+    },
+    3: {
+      title: "Engaging Teaching Methodology",
+      badge: "Experiential Learning",
+      desc: "Experiential, play-based pedagogical techniques tailored to young minds, where passionate educators guide children through joyful discovery.",
+      p1: "Playful Inquiry",
+      p1Sub: "Encouraging question-asking and active reasoning",
+      p2: "Child-First Guidance",
+      p2Sub: "Warm, accepting, and positive classroom culture"
+    },
+    4: {
+      title: "Tech Powered – Blended Learning",
+      badge: "Smart Education",
+      desc: "Smart digital learning integrated safely with offline sensory exploration, balancing interactive media with real-world physical play.",
+      p1: "Interactive Smart Panels",
+      p1Sub: "Age-safe audiovisual storytelling and phonics",
+      p2: "Balanced Screen Time",
+      p2Sub: "Guided digital discovery paired with physical play"
+    },
+    5: {
+      title: "Child Centered Activities",
+      badge: "Self-Directed Play",
+      desc: "Self-directed activities promoting independence, confidence, and motor skills through discovery stations, art, and expressive movement.",
+      p1: "Motor Skill Circuits",
+      p1Sub: "Balance, coordination, dexterity, and agility",
+      p2: "Independent Choice",
+      p2Sub: "Children choose play stations that spark joy"
+    },
+    6: {
+      title: "Colorful Celebrations & Functions",
+      badge: "Cultural Harmony",
+      desc: "Cultural festivities, theme days, and social events celebrating diversity, helping children appreciate traditions and embrace social harmony.",
+      p1: "Festival Highlights",
+      p1Sub: "Diwali, Bihu, Christmas, Grandparents' Day",
+      p2: "Stage Confidence",
+      p2Sub: "Costume pageants, music recitals & dance shows"
+    },
+    7: {
+      title: "Synergy",
+      badge: "Parent Partnerships",
+      desc: "Collaborative parent-teacher partnerships to ensure synchronized home and school growth, keeping families aligned on every developmental milestone.",
+      p1: "Transparent Updates",
+      p1Sub: "Daily progress snapshots and developmental logs",
+      p2: "Parent Workshops",
+      p2Sub: "Expert guidance for joyful home reinforcement"
+    },
+    8: {
+      title: "Wow! Wednesday",
+      badge: "Weekly Wonder",
+      desc: "Dedicated weekly activity days packed with unique experiments, discoveries, and fun themes that keep anticipation and excitement high.",
+      p1: "Mini Discovery Labs",
+      p1Sub: "Safe, wonder-filled sensory science experiments",
+      p2: "Role-Play Themes",
+      p2Sub: "Dress-ups as explorers, doctors, chefs, and artists"
+    },
+    9: {
+      title: "Holistic Assessments",
+      badge: "Stress-Free Tracking",
+      desc: "Continuous, stress-free observational tracking across emotional, cognitive, and physical growth without any grading pressure or tests.",
+      p1: "Milestone Portfolios",
+      p1Sub: "Detailed observation of real skill development",
+      p2: "Zero-Stress Feedback",
+      p2Sub: "Constructive parent consultations celebrating strengths"
+    },
+    10: {
+      title: "Well Trained Teachers",
+      badge: "Certified Mentors",
+      desc: "Certified, empathetic early-childhood educators who nurture every child individually with 1:10 loving attention and specialized training.",
+      p1: "Certified Educators",
+      p1Sub: "Specialized in early childhood psychology and care",
+      p2: "1:10 Loving Ratio",
+      p2Sub: "Ensuring every question and emotion is attended to"
+    },
+    11: {
+      title: "Child Friendly Infrastructure",
+      badge: "Safe Spaces",
+      desc: "Safe, ergonomic, child-proof campus spaces designed for exploratory play, featuring rounded edges, non-toxic finishes, and 24/7 CCTV.",
+      p1: "Safe Ergonomics",
+      p1Sub: "Anti-skid flooring and child-height furniture",
+      p2: "Monitored Security",
+      p2Sub: "CCTV surveillance and verified female attendants"
+    },
+    12: {
+      title: "Nutritious Mid-Day Meals",
+      badge: "Health & Nutrition",
+      desc: "Fresh, wholesome, dietitian-approved meals fostering healthy eating habits, good table manners, and proper childhood nourishment.",
+      p1: "Dietitian Curated",
+      p1Sub: "Balanced macros, fresh fruits, and healthy grains",
+      p2: "Dining Etiquette",
+      p2Sub: "Hand hygiene drills, sharing, and self-feeding"
+    }
+  };
+
+  const wheelOrbit = document.getElementById('wheelOrbit');
+  const wheelNodesTrack = document.getElementById('wheelNodesTrack');
+  const wheelNodes = document.querySelectorAll('.wheel-node');
+  const mobilePills = document.querySelectorAll('.curr-mobile-pill');
+  const curriculumDetailCard = document.getElementById('curriculumDetail');
+  const currTitle = document.getElementById('currTitle');
+  const currBadge = document.getElementById('currBadge');
+  const currDesc = document.getElementById('currDesc');
+  const currH1 = document.getElementById('currH1');
+  const currH1Sub = document.getElementById('currH1Sub');
+  const currH2 = document.getElementById('currH2');
+  const currH2Sub = document.getElementById('currH2Sub');
+  const currProgressBar = document.getElementById('currCardProgressBar');
+  const currRotText = document.getElementById('currRotText');
+
+  let currentCurriculumId = 1;
+  let currentWheelAngle = 0;
+  const TOTAL_NODES = 12;
+  const CYCLE_INTERVAL = 3800; // 3.8s per option
+  const USER_PAUSE_DELAY = 6000; // 6s resume delay after user interaction
+  let autoRotateTimer = null;
+  let resumeTimer = null;
+  let progressStartTime = null;
+  let progressAnimFrame = null;
+  let isAutoRotating = true;
+
+  const updateProgressBar = (timestamp) => {
+    if (!progressStartTime) progressStartTime = timestamp;
+    const elapsed = timestamp - progressStartTime;
+    const pct = Math.min(100, (elapsed / CYCLE_INTERVAL) * 100);
+
+    if (currProgressBar) {
+      currProgressBar.style.width = pct + '%';
+    }
+
+    if (elapsed < CYCLE_INTERVAL && isAutoRotating) {
+      progressAnimFrame = requestAnimationFrame(updateProgressBar);
+    }
+  };
+
+  const startProgressBar = () => {
+    cancelAnimationFrame(progressAnimFrame);
+    progressStartTime = null;
+    if (currProgressBar) currProgressBar.style.width = '0%';
+    if (isAutoRotating) {
+      progressAnimFrame = requestAnimationFrame(updateProgressBar);
+    }
+  };
+
+  const resetProgressBar = () => {
+    cancelAnimationFrame(progressAnimFrame);
+    if (currProgressBar) currProgressBar.style.width = '0%';
+  };
+
+  // Physically rotate wheel track and counter-rotate child nodes so options revolve around center (30 deg intervals)
+  const rotateWheelToId = (targetId) => {
+    const targetIndex = targetId - 1;
+    // Current top node index based on currentWheelAngle (30 deg per node)
+    const currentTopIndex = (((-Math.round(currentWheelAngle / 30)) % TOTAL_NODES) + TOTAL_NODES) % TOTAL_NODES;
+    let diff = targetIndex - currentTopIndex;
+    if (diff > 6) diff -= 12;
+    if (diff < -6) diff += 12;
+
+    currentWheelAngle -= (diff * 30);
+
+    if (wheelNodesTrack) {
+      wheelNodesTrack.style.transform = `rotate(${currentWheelAngle}deg)`;
+    }
+
+    wheelNodes.forEach(node => {
+      node.style.setProperty('--counter-rot', `${-currentWheelAngle}deg`);
+    });
+  };
+
+  const updateCurriculumView = (id, isUserInteraction = false) => {
+    const numId = parseInt(id, 10);
+    const data = curriculumData[numId];
+    if (!data) return;
+
+    currentCurriculumId = numId;
+
+    // Physically spin the wheel so selected option revolves to top spotlight
+    rotateWheelToId(numId);
+
+    // Update active satellite nodes
+    wheelNodes.forEach(node => {
+      const nodeId = parseInt(node.getAttribute('data-id'), 10);
+      node.classList.toggle('active', nodeId === numId);
+    });
+
+    // Update mobile pills
+    mobilePills.forEach(pill => {
+      const pillId = parseInt(pill.getAttribute('data-id'), 10);
+      const isActive = pillId === numId;
+      pill.classList.toggle('active', isActive);
+
+      if (isActive && isUserInteraction && pill.parentElement) {
+        const strip = pill.parentElement;
+        const targetLeft = pill.offsetLeft - (strip.clientWidth / 2) + (pill.clientWidth / 2);
+        strip.scrollTo({ left: targetLeft, behavior: 'smooth' });
+      }
+    });
+
+    // Animate detail card content with subtle fade
+    if (curriculumDetailCard) {
+      curriculumDetailCard.style.opacity = '0.82';
+      setTimeout(() => {
+        curriculumDetailCard.style.opacity = '1';
+      }, 180);
+    }
+
+    if (currTitle) currTitle.textContent = data.title;
+    if (currBadge) currBadge.textContent = data.badge;
+    if (currDesc) currDesc.textContent = data.desc;
+    if (currH1) currH1.textContent = data.p1;
+    if (currH1Sub) currH1Sub.textContent = data.p1Sub;
+    if (currH2) currH2.textContent = data.p2;
+    if (currH2Sub) currH2Sub.textContent = data.p2Sub;
+
+    if (isUserInteraction) {
+      // User tapped an option: pause auto-rotation immediately
+      stopAutoRotation();
+      resetProgressBar();
+
+      if (currRotText) {
+        currRotText.textContent = `Selected: ${data.title} • Resumes in 6s`;
+      }
+
+      // Clear any prior resume timer and restart rotation after 6s of inactivity
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        startAutoRotation();
+      }, USER_PAUSE_DELAY);
+    } else {
+      if (currRotText) {
+        currRotText.textContent = 'Auto-rotating wheel';
+      }
+      startProgressBar();
+    }
+  };
+
+  const nextCurriculumOption = () => {
+    const nextId = (currentCurriculumId % TOTAL_NODES) + 1;
+    updateCurriculumView(nextId, false);
+  };
+
+  const startAutoRotation = () => {
+    isAutoRotating = true;
+    clearInterval(autoRotateTimer);
+    clearTimeout(resumeTimer);
+    if (currRotText) currRotText.textContent = 'Auto-rotating wheel';
+    startProgressBar();
+    autoRotateTimer = setInterval(nextCurriculumOption, CYCLE_INTERVAL);
+  };
+
+  const stopAutoRotation = () => {
+    isAutoRotating = false;
+    clearInterval(autoRotateTimer);
+    resetProgressBar();
+  };
+
+  // Node Click Handlers
+  wheelNodes.forEach(node => {
+    node.addEventListener('click', () => {
+      const id = node.getAttribute('data-id');
+      updateCurriculumView(id, true);
+    });
+  });
+
+  // Mobile Pills Click Handlers
+  mobilePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const id = pill.getAttribute('data-id');
+      updateCurriculumView(id, true);
+    });
+  });
+
+  // Pause on hover over detail card so parents can read at leisure
+  curriculumDetailCard?.addEventListener('mouseenter', () => {
+    if (isAutoRotating) {
+      clearInterval(autoRotateTimer);
+      cancelAnimationFrame(progressAnimFrame);
+      if (currRotText) currRotText.textContent = 'Paused (Reading)';
+    }
+  });
+
+  curriculumDetailCard?.addEventListener('mouseleave', () => {
+    if (isAutoRotating) {
+      startAutoRotation();
+    }
+  });
+
+  // Initialize wheel rotation and start auto-cycle
+  if (wheelNodesTrack && wheelNodes.length > 0) {
+    rotateWheelToId(1);
+    startAutoRotation();
+  }
 
   // 5. Interactive Moving Reviews Marquee Controls
   const reviewsMarqueeWrapper = document.getElementById('reviewsMarqueeWrapper');

@@ -35,12 +35,16 @@
 <body>
   <!-- Top Notification Bar -->
   <div class="top-bar">
-    <div class="container top-bar-content">
-      <div class="top-bar-left">
-        <span class="badge-new">Admissions 2025-26</span>
-        <span>🎉 Admissions Open for Playgroup, Pre-Nursery, Nursery & KG • Limited Seats per Batch</span>
+    <div class="container top-bar-inner">
+      <div class="top-bar-content">
+        <span class="top-bar-badge">✨ Admissions Open 2025–26</span>
+        <span class="top-bar-text top-bar-text-desktop">Enroll now & secure your child's joyful early learning journey!</span>
+        <span class="top-bar-text top-bar-text-mobile">Enroll Now • Secure Child's Seat!</span>
       </div>
-      <div class="top-bar-right">
+      <div class="top-bar-links">
+        <a href="index.html#location" class="top-bar-link" title="Click to view campus location and map">
+          <span>📍</span> Beltola, Guwahati
+        </a>
         <a href="tel:+919864134701" class="top-bar-link"
           style="background: rgba(0,0,0,0.15); padding: 0.2rem 0.65rem; border-radius: 99px;">
           <span>📞</span> Call: +91 98641 34701
@@ -704,7 +708,7 @@
         <div>
           © 2025-2026 SHEMROCK Playschool, Guwahati. All Rights Reserved.
         </div>
-        <div style="display: flex; gap: 1.5rem;">
+        <div class="footer-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Disclaimer</a>
           <a href="#">Refund Policy</a>
@@ -750,7 +754,7 @@
           <input type="tel" id="parentPhone" class="form-control" placeholder="+91 98641 34701"
             pattern="[0-9+ -]{10,14}" required>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-row form-row-2col">
           <div class="form-group">
             <label class="form-label" for="childAge">Child's Age *</label>
             <select id="childAge" class="form-control" required>
