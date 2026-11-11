@@ -848,357 +848,258 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   CURRICULUM EXPLORER: ShemEduMAX™ (Adaptive for Tablet & Mobile)
+   CURRICULUM SECTION: ShemEduMAX™ (12-Pillar Modern Responsive Grid)
    ========================================================================== */
 .curriculum-section {
-  background: #FFFDF7;
-}
-
-.curriculum-container {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-/* Desktop Orbital Wheel */
-/* ==========================================================================
-   CURRICULUM EXPLORER: ShemEduMAX™ (Interactive Rotating Wheel)
-   ========================================================================== */
-.curriculum-section {
-  background: #FFFDF7;
+  background: linear-gradient(180deg, #FFFDF7 0%, #FFFFFF 100%);
   position: relative;
   overflow: hidden;
 }
 
-.curriculum-container {
+.curriculum-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 3.5rem;
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
-/* Desktop Orbital Wheel */
-.wheel-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-  user-select: none;
-}
-
-.wheel-orbit {
-  position: relative;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  border: none; /* Removed duplicate border to prevent 2 overlapping circles */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.6s ease;
-}
-
-/* Single Subtle Orbital Dashed Track */
-.orbit-rotator-ring {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px dashed rgba(229, 41, 40, 0.32);
-  pointer-events: none;
-}
-
-.orbit-pulse-halo {
-  position: absolute;
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(229, 41, 40, 0.12) 0%, rgba(229, 41, 40, 0) 70%);
-  animation: haloPulse 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes orbitRingSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes haloPulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.25); opacity: 1; }
-}
-
-.wheel-center {
-  width: 154px;
-  height: 154px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #E52928 0%, #FF4D3D 100%);
-  color: #FFFFFF;
+.curriculum-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid #F1F5F9;
+  padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.curriculum-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--card-border-color, #E2E8F0);
+}
+
+/* Card top bar: Icon + Pillar Number */
+.curriculum-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.curriculum-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 0.85rem;
-  box-shadow: 0 12px 30px rgba(229, 41, 40, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
-  z-index: 5;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--icon-bg, #FFF1F0);
+  color: var(--icon-color, var(--color-primary));
+  box-shadow: 0 4px 12px var(--icon-shadow, rgba(229, 41, 40, 0.15));
+  transition: transform 0.3s ease;
 }
 
-.wheel-center:hover {
-  transform: scale(1.04);
-  box-shadow: 0 16px 36px rgba(229, 41, 40, 0.5);
+.curriculum-card:hover .curriculum-icon-wrap {
+  transform: scale(1.1) rotate(-3deg);
 }
 
-.wheel-center h3 {
+.curriculum-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+.curriculum-pillar-num {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94A3B8;
+  background: #F8FAFC;
+  padding: 0.25rem 0.65rem;
+  border-radius: 99px;
+  border: 1px solid #E2E8F0;
+  letter-spacing: 0.05em;
+}
+
+.curriculum-card-title {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 0.2rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: #0F172A;
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
 }
 
-.wheel-center span {
-  font-size: 0.74rem;
-  font-weight: 500;
-  opacity: 0.95;
-  letter-spacing: 0.3px;
+.curriculum-card-desc {
+  font-size: 0.92rem;
+  color: #64748B;
+  line-height: 1.6;
+  flex-grow: 1;
 }
 
-/* Top Active Spotlight Glow (Matches Screenshot 1) */
-.wheel-top-spotlight {
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(229, 41, 40, 0.28) 0%, rgba(229, 41, 40, 0) 70%);
-  pointer-events: none;
-  z-index: 3;
-  animation: spotlightPulse 2.5s ease-in-out infinite;
+/* Color Accent Variants for the 12 Pillars */
+.curr-card-red {
+  --icon-bg: #FEE2E2;
+  --icon-color: #E52928;
+  --icon-shadow: rgba(229, 41, 40, 0.18);
+  --card-border-color: #FECACA;
 }
 
-@keyframes spotlightPulse {
-  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.75; }
-  50% { transform: translateX(-50%) scale(1.22); opacity: 1; }
+.curr-card-amber {
+  --icon-bg: #FEF3C7;
+  --icon-color: #D97706;
+  --icon-shadow: rgba(217, 119, 6, 0.18);
+  --card-border-color: #FDE68A;
 }
 
-/* Rotating Nodes Track (All 8 options physically revolve around the center) */
-.wheel-nodes-track {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  pointer-events: none;
-  transition: transform 1.1s cubic-bezier(0.34, 1.25, 0.64, 1);
-  will-change: transform;
-  z-index: 6;
+.curr-card-blue {
+  --icon-bg: #E0F2FE;
+  --icon-color: #0284C7;
+  --icon-shadow: rgba(2, 132, 199, 0.18);
+  --card-border-color: #BAE6FD;
 }
 
-/* Interactive Satellite Nodes */
-.wheel-node {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 66px;
-  height: 66px;
-  margin-top: -33px;
-  margin-left: -33px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  border: 2.2px solid #E2E8F0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 4;
-  transform: translate(var(--tx), var(--ty)) rotate(var(--counter-rot, 0deg)) scale(1);
-  transition: transform 1.1s cubic-bezier(0.34, 1.25, 0.64, 1), 
-              border-color 0.25s ease, 
-              background 0.25s ease, 
-              box-shadow 0.25s ease;
+.curr-card-purple {
+  --icon-bg: #EDE9FE;
+  --icon-color: #7C3AED;
+  --icon-shadow: rgba(124, 58, 237, 0.18);
+  --card-border-color: #DDD6FE;
 }
 
-.wheel-node .node-emoji {
-  font-size: 1.3rem;
-  line-height: 1;
-  transition: transform 0.25s ease;
+.curr-card-green {
+  --icon-bg: #DCFCE7;
+  --icon-color: #059669;
+  --icon-shadow: rgba(5, 150, 105, 0.18);
+  --card-border-color: #A7F3D0;
 }
 
-.wheel-node .node-label {
-  font-family: var(--font-heading);
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #334155;
-  line-height: 1;
-  margin-top: 3px;
-  text-align: center;
-  max-width: 52px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.25s ease;
+.curr-card-pink {
+  --icon-bg: #FCE7F3;
+  --icon-color: #DB2777;
+  --icon-shadow: rgba(219, 39, 119, 0.18);
+  --card-border-color: #FBCFE8;
 }
 
-.wheel-node:hover {
-  transform: translate(var(--tx), var(--ty)) rotate(var(--counter-rot, 0deg)) scale(1.12);
-  border-color: #CBD5E1;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+.curr-card-indigo {
+  --icon-bg: #DBEAFE;
+  --icon-color: #2563EB;
+  --icon-shadow: rgba(37, 99, 235, 0.18);
+  --card-border-color: #BFDBFE;
 }
 
-.wheel-node.active {
-  transform: translate(var(--tx), var(--ty)) rotate(var(--counter-rot, 0deg)) scale(1.22);
-  border-color: #E52928;
-  background: #FFFFFF;
-  box-shadow: 0 0 0 5px rgba(229, 41, 40, 0.2), 0 10px 28px rgba(229, 41, 40, 0.42);
-  z-index: 10;
+.curr-card-orange {
+  --icon-bg: #FFEDD5;
+  --icon-color: #EA580C;
+  --icon-shadow: rgba(234, 88, 12, 0.18);
+  --card-border-color: #FED7AA;
 }
 
-.wheel-node.active .node-emoji {
-  transform: scale(1.15);
+.curr-card-teal {
+  --icon-bg: #CFFAFE;
+  --icon-color: #0891B2;
+  --icon-shadow: rgba(8, 145, 178, 0.18);
+  --card-border-color: #A5F3FC;
 }
 
-.wheel-node.active .node-label {
-  color: #E52928;
-  font-weight: 800;
+.curr-card-rose {
+  --icon-bg: #FFE4E6;
+  --icon-color: #E11D48;
+  --icon-shadow: rgba(225, 29, 72, 0.18);
+  --card-border-color: #FECDD3;
 }
 
-/* Exact Trigonometric Coordinates (Radius = 180px) */
-.node-1 { --tx: 0px;    --ty: -180px; }
-.node-2 { --tx: 127px;  --ty: -127px; }
-.node-3 { --tx: 180px;  --ty: 0px; }
-.node-4 { --tx: 127px;  --ty: 127px; }
-.node-5 { --tx: 0px;    --ty: 180px; }
-.node-6 { --tx: -127px; --ty: 127px; }
-.node-7 { --tx: -180px; --ty: 0px; }
-.node-8 { --tx: -127px; --ty: -127px; }
-
-/* Mobile / Tablet Horizontal Pills Strip */
-.curriculum-mobile-strip {
-  display: none;
+.curr-card-emerald {
+  --icon-bg: #DCFCE7;
+  --icon-color: #16A34A;
+  --icon-shadow: rgba(22, 163, 74, 0.18);
+  --card-border-color: #BBF7D0;
 }
 
-/* Curriculum Detail Card */
-.curriculum-detail-card {
-  background: #FFFFFF;
+.curr-card-yellow {
+  --icon-bg: #FEF9C3;
+  --icon-color: #CA8A04;
+  --icon-shadow: rgba(202, 138, 4, 0.18);
+  --card-border-color: #FEF08A;
+}
+
+/* Bottom Summary Footer Card */
+.curriculum-footer-card {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
-  box-shadow: var(--shadow-md);
-  border: 1.5px solid #FEF3C7;
+  padding: 2.25rem 2.5rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.15);
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
 }
 
-.curriculum-detail-card:hover {
-  box-shadow: var(--shadow-lg);
-}
-
-/* Subtle Progress Bar */
-.curr-card-progress {
+.curriculum-footer-card::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: rgba(229, 41, 40, 0.08);
-}
-
-.curr-card-progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #E52928, #FFB800);
-  transition: width 0.1s linear;
-}
-
-.curr-rotation-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #64748B;
-  background: #F8FAFC;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-
-.curr-rot-dot {
-  width: 7px;
-  height: 7px;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 6px #10B981;
-  animation: blinkPulse 2s infinite;
+  background: radial-gradient(circle, rgba(229, 41, 40, 0.35) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-@keyframes blinkPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+.curr-footer-content {
+  max-width: 650px;
 }
 
-.curriculum-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: #FEF3C7;
-  color: #B45309;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
+.curr-footer-title {
   font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 1.55rem;
+  color: #FFFFFF;
+  margin: 0.65rem 0 0.4rem 0;
 }
 
-.curriculum-detail-title {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #0F172A;
-  margin-bottom: 0.75rem;
+.curr-footer-text {
+  font-size: 0.95rem;
+  color: #CBD5E1;
+  line-height: 1.6;
 }
 
-.curriculum-detail-desc {
-  font-size: 0.98rem;
-  color: #475569;
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
+/* Responsive Grid Breakpoints */
+@media (max-width: 1200px) {
+  .curriculum-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.curriculum-highlights {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.85rem;
-  margin-bottom: 1.5rem;
+@media (max-width: 991px) {
+  .curriculum-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
 }
 
-.highlight-box {
-  background: var(--color-surface-soft);
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-md);
-  border-left: 3.5px solid var(--color-primary);
-}
-
-.highlight-box strong {
-  display: block;
-  font-size: 0.9rem;
-  color: #0F172A;
-  margin-bottom: 0.15rem;
-}
-
-.highlight-box span {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+@media (max-width: 640px) {
+  .curriculum-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .curriculum-footer-card {
+    padding: 1.75rem 1.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .curr-footer-action .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ==========================================================================
@@ -2211,15 +2112,6 @@ button, input, select, textarea {
     padding: 3.5rem 0;
   }
 
-  .wheel-orbit {
-    width: 340px;
-    height: 340px;
-  }
-
-  .wheel-center {
-    width: 135px;
-    height: 135px;
-  }
 
   .programs-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2305,15 +2197,6 @@ button, input, select, textarea {
     height: 340px;
   }
 
-  .curriculum-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .wheel-orbit {
-    width: 330px;
-    height: 330px;
-  }
 
   .programs-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2917,79 +2800,7 @@ button, input, select, textarea {
     gap: 0.5rem;
   }
 
-  /* Curriculum on Mobile: Scaled Interactive Wheel + Pills Strip */
-  .curriculum-mobile-strip {
-    display: flex;
-    overflow-x: auto;
-    gap: 0.5rem;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.25rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
 
-  .curr-mobile-pill {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
-    padding: 0.45rem 0.85rem;
-    border-radius: var(--radius-full);
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #475569;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-  }
-
-  .curr-mobile-pill.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(229, 41, 40, 0.25);
-  }
-
-  .curriculum-container {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    min-width: 0;
-  }
-
-  .wheel-wrapper {
-    position: relative;
-    width: 100%;
-    height: 310px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.25rem auto 1rem auto;
-    padding: 0;
-    overflow: visible;
-  }
-
-  .wheel-orbit {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.66);
-    transform-origin: center center;
-    margin: 0;
-  }
-
-  .curriculum-detail-card {
-    padding: 1.35rem;
-  }
-
-  .curriculum-detail-title {
-    font-size: 1.35rem;
-  }
-
-  .curriculum-highlights {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
 
   /* Programs Section Mobile Controls & Peek Cards */
   .programs-mobile-nav {
@@ -3501,14 +3312,6 @@ button, input, select, textarea {
     min-width: 80vw;
   }
 
-  .wheel-wrapper {
-    height: 280px;
-  }
-
-  .wheel-orbit {
-    transform: translate(-50%, -50%) scale(0.58);
-    margin: 0;
-  }
 }
 
 /* ==========================================================================
@@ -3545,21 +3348,6 @@ button, input, select, textarea {
   75% { transform: scale(1.18) rotate(9deg); }
 }
 
-/* Rhythmic breathing glow on center hub */
-.wheel-center {
-  animation: hubGlowBreath 3.5s ease-in-out infinite;
-}
-
-@keyframes hubGlowBreath {
-  0%, 100% {
-    box-shadow: 0 10px 28px rgba(229, 41, 40, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 14px 38px rgba(229, 41, 40, 0.58), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-    transform: scale(1.03);
-  }
-}
 
 /* Playful Button Hover Bounce */
 .btn-primary:hover, .btn-yellow:hover {
