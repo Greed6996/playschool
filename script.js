@@ -43,11 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerCloseBtn = document.getElementById('drawerCloseBtn');
   const navMenu = document.getElementById('navMenu');
 
+  const mobileStickyBar = document.getElementById('mobileStickyBar');
+
   const openMobileMenu = () => {
     navMenuWrapper?.classList.add('active');
     navBackdrop?.classList.add('active');
     mobileToggle?.classList.add('active');
     navMenu?.classList.add('active');
+    mobileStickyBar?.classList.add('drawer-open');
     document.body.style.overflow = 'hidden';
   };
 
@@ -56,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navBackdrop?.classList.remove('active');
     mobileToggle?.classList.remove('active');
     navMenu?.classList.remove('active');
+    mobileStickyBar?.classList.remove('drawer-open');
     document.body.style.overflow = '';
   };
 
@@ -500,14 +504,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  if (faqItems[0]) {
-    faqItems[0].classList.add('active');
-    const firstContent = faqItems[0].querySelector('.faq-content');
-    if (firstContent) {
-      firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
-    }
-  }
 
   // 7. Lightweight Fast Confetti (Clean Canvas Loop)
   const triggerConfetti = () => {
